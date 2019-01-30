@@ -1,5 +1,9 @@
 package com.example.a21746033.appturtleriot;
 
+import android.content.Intent;
+import android.os.Handler;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,24 +12,29 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView tvNuevaCuenta;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tvNuevaCuenta = findViewById(R.id.tvNuevaCuenta);
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.rlMain, new SplashScreenFragment());
+        ft.commit();
 
-        tvNuevaCuenta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"Hola",Toast.LENGTH_LONG).show();
-            }
-        });
+        abrirPantallaInicio();
     }
 
-    public void c_btnSignIn(View v){
-
+    private void abrirPantallaInicio() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                FragmentManager fm2 = getSupportFragmentManager();
+                FragmentTransaction ft2 = fm2.beginTransaction();
+                ft2.replace(R.id.rlMain, new PantallaInicioFragment());
+                ft2.commit();
+            }
+        }, 5300);
     }
 }
