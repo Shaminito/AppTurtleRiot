@@ -1,6 +1,7 @@
 package com.example.a21746033.appturtleriot;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -23,6 +24,10 @@ public class PantallaInicioFragment extends Fragment {
     private TextView tvNuevaCuenta;
 
     public PantallaInicioFragment() {}
+
+    public void setView(View view){
+        v = view;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
@@ -57,7 +62,8 @@ public class PantallaInicioFragment extends Fragment {
         tvNuevaCuenta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO REGISTRAR
+                Intent i = new Intent(v.getContext(),RegisterUserActivity.class);
+                startActivity(i);
             }
         });
     }
