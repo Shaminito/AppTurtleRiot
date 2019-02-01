@@ -14,5 +14,7 @@ public class RegisterUserActivity extends AppCompatActivity {
 
     public void btnRegistro(View v) {
         //TO-DO
+
+        
     }
 }
