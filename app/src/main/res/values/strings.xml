@@ -5,4 +5,7 @@
     <string name="txt_btnSignIn">Conectar</string>
     <string name="txt_tvCuenta">No tienes cuenta?</string>
     <string name="txt_tvNuevaCuenta">Crear Cuenta</string>
+    <string name="hint_etRegUserNombre">Nombre Usuario</string>
+    <string name="hint_etRegCorreoNombre">Correo electronico</string>
+    <string name="txt_btnRegistrar">Registrar</string>
 </resources>

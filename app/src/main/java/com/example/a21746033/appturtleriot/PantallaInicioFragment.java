@@ -25,10 +25,6 @@ public class PantallaInicioFragment extends Fragment {
 
     public PantallaInicioFragment() {}
 
-    public void setView(View view){
-        v = view;
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_pantalla_inicio,container, false);
@@ -61,9 +57,9 @@ public class PantallaInicioFragment extends Fragment {
     private void c_tvNuevaCuneta() {
         tvNuevaCuenta.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 Intent i = new Intent(v.getContext(),RegisterUserActivity.class);
-                startActivity(i);
+                v.getContext().startActivity(i);
             }
         });
     }

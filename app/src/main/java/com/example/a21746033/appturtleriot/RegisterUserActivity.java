@@ -1,7 +1,7 @@
 package com.example.a21746033.appturtleriot;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 
 public class RegisterUserActivity extends AppCompatActivity {
@@ -10,12 +10,11 @@ public class RegisterUserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
-        getSupportActionBar().hide(); //esconde el appMenu
+
+        getSupportActionBar().hide();
     }
 
-    public void btnRegistro(View v) {
-        //TO-DO
-
+    public void c_btnRegistrar(View v){
 
     }
 }
