@@ -8,6 +8,18 @@ import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    /*//BASE DATOS
+
+    private DatabaseReference dbR;
+    private ChildEventListener cel;
+
+    //AUTENTICACION FIREBASE
+
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseAuth.AuthStateListener cel;
+    public static final int RC_SING_IN=1;*/
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
 
         abrirPantallaInicio();
         getSupportActionBar().hide(); //esconde el appMenu
+
+
+        //
+        // dbR = FirebaseDatabase.getInstance().getReference().child("Mensaje");
+        // AnadirChildEventListener();
     }
 
     private void abrirPantallaInicio() {
@@ -37,3 +54,22 @@ public class MainActivity extends AppCompatActivity {
         }, 5300);
     }
 }
+
+
+//CHILDEVENTLISTENER
+/*
+    private void AnadirChildEventListener(){
+        if(cel == null){
+
+            cel = new ChildEventListener(){
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    System.out.println("Nuevo usuario creado");
+                    user user = dataSnapshot.getValue(UsuarioPojo.class);
+                    datos.add(user);
+                    adapter.notifyItemInserted(datos.size()-1);
+            }
+        }
+    }
+
+
+}*/
