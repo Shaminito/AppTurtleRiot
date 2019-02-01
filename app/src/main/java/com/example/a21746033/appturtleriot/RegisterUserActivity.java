@@ -10,11 +10,12 @@ public class RegisterUserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
+        getSupportActionBar().hide(); //esconde el appMenu
     }
 
     public void btnRegistro(View v) {
         //TO-DO
 
-        
+
     }
 }
