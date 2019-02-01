@@ -4,8 +4,6 @@ package com.example.a21746033.appturtleriot;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +25,7 @@ public class SplashScreenFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_splash_screen, container, false);
+
 
         ivLOGOSplash = v.findViewById(R.id.ivLOGOSplash);
         tvNomApp = v.findViewById(R.id.tvNomApp);
