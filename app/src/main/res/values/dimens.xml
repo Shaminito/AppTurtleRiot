@@ -5,4 +5,8 @@
     <dimen name="margin_et_left">10dp</dimen>
     <dimen name="margin_button">50dp</dimen>
     <dimen name="margin_boton">25</dimen>
+    <dimen name="margin_izq_imgRegistro">162dp</dimen>
+    <dimen name="lm_ajusteTextPlain">10</dimen>
+    <dimen name="lm_ajuste_iwContrasena">162</dimen>
+
 </resources>
