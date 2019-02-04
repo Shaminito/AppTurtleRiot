@@ -7,5 +7,8 @@
     <string name="txt_tvNuevaCuenta">Crear Cuenta</string>
     <string name="hint_etRegUserNombre">Nombre Usuario</string>
     <string name="hint_etRegCorreoNombre">Correo electronico</string>
+    <string name="hint_loginUser">Nombre o correo</string>
+
     <string name="txt_btnRegistrar">Registrar</string>
+
 </resources>

@@ -41,8 +41,11 @@
                 android:id="@+id/etRegUserNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/background_light"
                 android:hint="@string/hint_etRegUserNombre"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textColor="@color/textColor_Whiite"
+                android:textColorHint="@color/color_hint" />
 
             <ImageView
                 android:id="@+id/iwLogoEmail"
@@ -55,8 +58,11 @@
                 android:id="@+id/etRegUserEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/background_light"
                 android:hint="@string/hint_etRegCorreoNombre"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:textColor="@color/textColor_Whiite"
+                android:textColorHint="@color/color_hint" />
 
             <ImageView
                 android:id="@+id/iwPassword"
@@ -69,7 +75,9 @@
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword" />
+                android:backgroundTint="@android:color/background_light"
+                android:inputType="textPassword"
+                android:textColor="@color/textColor_Whiite" />
 
         </LinearLayout>
 
