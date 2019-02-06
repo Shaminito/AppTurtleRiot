@@ -12,7 +12,7 @@
         <activity
             android:name=".PortadaManuActivity"
             android:label="@string/title_activity_portada_manu"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterUserActivity" />
+        <activity android:name=".AccionesActivity"></activity>
     </application>
 
 </manifest>

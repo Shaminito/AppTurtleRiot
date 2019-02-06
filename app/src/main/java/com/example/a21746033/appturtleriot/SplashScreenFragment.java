@@ -56,4 +56,6 @@ public class SplashScreenFragment extends Fragment {
         return v;
     }
 
+
+
 }

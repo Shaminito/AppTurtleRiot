@@ -10,7 +10,7 @@
     <string name="hint_loginUser">Nombre o correo</string>
 
     <string name="txt_btnRegistrar">Registrar</string>
-    <string name="title_activity_portada_manu">PortadaManuActivity</string>
+    <string name="title_activity_portada_manu"></string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -23,5 +23,6 @@
     <string name="com">Compartir</string>
     <string name="Compartir" />
     <string name="vc_com">Comparit</string>
+    <string name="texBienbenido">Bienvenido</string>
 
 </resources>
