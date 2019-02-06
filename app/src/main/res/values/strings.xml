@@ -28,5 +28,9 @@
     <string name="txt_tvAdvertencia">Advertencia</string>
     <string name="txt_tvPlayas">Playas</string>
     <string name="txt_tvIr">Ir</string>
+    <string name="toast_verifData">Los datos deben ser rellenables</string>
+    <string name="toast_no_accede">Usuario no logeado</string>
+    <string name="REG_EMAIL" />
+    <string name="REG_PASWD" />
 
 </resources>
