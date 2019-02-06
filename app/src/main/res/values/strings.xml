@@ -24,5 +24,9 @@
     <string name="Compartir" />
     <string name="vc_com">Comparit</string>
     <string name="texBienbenido">Bienvenido</string>
+    <string name="txt_tvAcciones">Acciones</string>
+    <string name="txt_tvAdvertencia">Advertencia</string>
+    <string name="txt_tvPlayas">Playas</string>
+    <string name="txt_tvIr">Ir</string>
 
 </resources>

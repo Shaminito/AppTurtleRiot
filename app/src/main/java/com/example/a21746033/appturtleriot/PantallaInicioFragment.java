@@ -51,7 +51,6 @@ public class PantallaInicioFragment extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(v.getContext(), PortadaManuActivity.class);
                 startActivity(i);
-
             }
         });
     }
