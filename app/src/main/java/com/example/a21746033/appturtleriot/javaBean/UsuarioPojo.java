@@ -6,6 +6,7 @@ public class UsuarioPojo {
     private String email;
     private String password;
 
+
     public UsuarioPojo() {
     }
 
@@ -25,6 +26,18 @@ public class UsuarioPojo {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
 
