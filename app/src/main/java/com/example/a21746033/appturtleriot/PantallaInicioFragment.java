@@ -49,7 +49,9 @@ public class PantallaInicioFragment extends Fragment {
         btnConectar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO CONECTAR
+                Intent i = new Intent(v.getContext(), PortadaManuActivity.class);
+                startActivity(i);
+
             }
         });
     }

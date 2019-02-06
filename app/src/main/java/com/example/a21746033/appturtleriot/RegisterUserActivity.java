@@ -1,5 +1,6 @@
 package com.example.a21746033.appturtleriot;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,8 @@ public class RegisterUserActivity extends AppCompatActivity {
     }
 
     public void c_btnRegistrar(View v){
+        Intent i = new Intent(v.getContext(), PortadaManuActivity.class);
+        startActivity(i);
 
     }
 }
