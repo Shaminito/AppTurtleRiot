@@ -1,35 +1,27 @@
 {
   "project_info": {
-    "project_number": "945836514200",
-    "firebase_url": "https://fir-turtleriot.firebaseio.com",
-    "project_id": "fir-turtleriot",
-    "storage_bucket": "fir-turtleriot.appspot.com"
+    "project_number": "15164720006",
+    "firebase_url": "https://fir-turtleriot-163e3.firebaseio.com",
+    "project_id": "fir-turtleriot-163e3",
+    "storage_bucket": "fir-turtleriot-163e3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:945836514200:android:cc0c02a35085da10",
+        "mobilesdk_app_id": "1:15164720006:android:a6d4fa894b2f270f",
         "android_client_info": {
           "package_name": "com.example.a21746033.appturtleriot"
         }
       },
       "oauth_client": [
         {
-          "client_id": "945836514200-q7jk4k5fbgojn2v6vignkonm8jbb577k.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.a21746033.appturtleriot",
-            "certificate_hash": "659714bc23461a71f8aec2471ca3f2e00f4010d5"
-          }
-        },
-        {
-          "client_id": "945836514200-q4i9spo10tqidccbql9le4dbo9mf4e5b.apps.googleusercontent.com",
+          "client_id": "15164720006-0i2m5sptvjq15a3v9qsjpeuqn60mi1vf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBw0xJlTI2On9qk-JwpKJHPrgfKn1AJpRY"
+          "current_key": "AIzaSyBqXlCujc623Ci268kzrj_jAGrK4eyGgnY"
         }
       ],
       "services": {
@@ -37,13 +29,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "945836514200-q4i9spo10tqidccbql9le4dbo9mf4e5b.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2
