@@ -1,22 +1,11 @@
 package com.example.a21746033.appturtleriot;
 
-import android.os.Bundle;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 
-import com.google.firebase.auth.FirebaseAuth;
-
 public class RegisterUserActivity extends AppCompatActivity {
-
-
-    //AUTENTICACION
-
-    private FirebaseAuth mFirebaseAuth;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
-    public static final int RC_SIGN_IN = 1;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +16,8 @@ public class RegisterUserActivity extends AppCompatActivity {
     }
 
     public void c_btnRegistrar(View v){
+        Intent i = new Intent(v.getContext(), PortadaManuActivity.class);
+        startActivity(i);
 
     }
 }
