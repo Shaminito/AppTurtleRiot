@@ -20,15 +20,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
             android:padding="@dimen/margenes_menu">
 
             <ImageView
                 android:id="@+id/ivAcciones"
-                android:layout_width="wrap_content"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/team" />
+                app:srcCompat="@drawable/accion" />
 
             <TextView
                 android:id="@+id/tvAcciones"
@@ -45,15 +46,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
             android:padding="@dimen/margenes_menu">
 
             <ImageView
                 android:id="@+id/ivAdvertencia"
-                android:layout_width="wrap_content"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/speechbubble" />
+                app:srcCompat="@drawable/advertencia" />
 
             <TextView
                 android:id="@+id/tvAdvertencia"
@@ -70,15 +72,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
             android:padding="@dimen/margenes_menu">
 
             <ImageView
                 android:id="@+id/ivPlayas"
-                android:layout_width="wrap_content"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/beach" />
+                app:srcCompat="@drawable/playa" />
 
             <TextView
                 android:id="@+id/tvPlayas"
@@ -95,15 +98,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
             android:padding="@dimen/margenes_menu">
 
             <ImageView
                 android:id="@+id/ivIr"
-                android:layout_width="wrap_content"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/bus" />
+                app:srcCompat="@drawable/ir" />
 
             <TextView
                 android:id="@+id/tvIr"
@@ -117,27 +121,34 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/rlFragmentContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/llMenu"
-        android:background="@android:color/background_light"
-        android:orientation="vertical">
+        android:background="@android:color/background_light">
 
-        <ImageView
-            android:id="@+id/imageView2"
+        <LinearLayout
+            android:id="@+id/llFragmentContent"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            app:srcCompat="@mipmap/ic_launcher_foreground" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/life_s_a_beach_thin"
-            android:text="Bienvenido"
-            android:textAlignment="center"
-            android:textSize="30sp" />
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/ivMenuBienvenido"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:srcCompat="@mipmap/ic_launcher_foreground" />
+
+            <TextView
+                android:id="@+id/tvMenuBienvenido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/life_s_a_beach_thin"
+                android:text="Bienvenido"
+                android:textAlignment="center"
+                android:textSize="30sp" />
+        </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

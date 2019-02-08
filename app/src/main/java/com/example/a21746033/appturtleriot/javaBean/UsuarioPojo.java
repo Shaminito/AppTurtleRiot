@@ -9,8 +9,7 @@ public class UsuarioPojo implements Parcelable {
     private String email;
     private String password;
 
-    public UsuarioPojo() {
-    }
+    public UsuarioPojo() {}
 
     public UsuarioPojo(String user, String email, String password) {
         this.user = user;
