@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a21746033.appturtleriot.autenticacion.Autenticacion;
+import com.example.a21746033.appturtleriot.javaBean.UsuarioPojo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -110,6 +111,22 @@ public class PantallaInicioFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        //TODO
+        if(requestCode == REGISTRAR_CUENTA){
+            if(resultCode == getActivity().RESULT_OK){
+                UsuarioPojo usuario = data.getParcelableExtra(getString(R.string.REG_USUARIO));
+                String correo = usuario.getEmail();
+                String passwd = usuario.getPassword();
+                autenticacion.getFba().createUserWithEmailAndPassword(correo, passwd).addOnCompleteListener((Activity) v.getContext(), new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = autenticacion.getFba().getCurrentUser();
+                            Toast.makeText(getContext(), getString(R.string.toast_CreateUserSucefully), Toast.LENGTH_SHORT).show();
+                            etLoginUser.setText(user.getEmail());
+                        }
+                    }
+                });
+            }
+        }
     }
 }

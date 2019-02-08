@@ -7,11 +7,18 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.a21746033.appturtleriot.javaBean.UsuarioPojo;
+
 public class RegisterUserActivity extends AppCompatActivity {
 
     //private EditText etRegUserNombre;
     private EditText etRegUserEmail;
-    private EditText etRegUserPassword;
+    private EditText etPassword;
+
+    private String correo;
+    private String passwd;
+
+    UsuarioPojo usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,16 +26,18 @@ public class RegisterUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register_user);
 
         etRegUserEmail = findViewById(R.id.etRegUserEmail);
-        etRegUserPassword = findViewById(R.id.etPassword);
+        etPassword = findViewById(R.id.etPassword);
 
         getSupportActionBar().hide();
     }
 
     public void c_btnRegistrar(View v){
+        correo = etRegUserEmail.getText().toString().trim();
+        passwd = etPassword.getText().toString().trim();
+        usuario = new UsuarioPojo(correo, passwd);
         if(verificarDatos()){
             Intent i = getIntent();
-            i.putExtra(getString(R.string.REG_EMAIL),etRegUserEmail.getText().toString().trim());
-            i.putExtra(getString(R.string.REG_PASWD),etRegUserPassword.getText().toString().trim());
+            i.putExtra(getString(R.string.REG_USUARIO),usuario);
             setResult(RESULT_OK,i);
             finish();
         }
@@ -42,7 +51,7 @@ public class RegisterUserActivity extends AppCompatActivity {
     }
 
     private boolean verificarDatos() {
-        if (etRegUserEmail.getText().toString().trim().isEmpty() || etRegUserPassword.getText().toString().trim().isEmpty()) {
+        if (correo.isEmpty() || passwd.isEmpty()) {
             return false;
         } else {
             return true;
