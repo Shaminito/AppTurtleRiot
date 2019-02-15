@@ -14,7 +14,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.a21746033.appturtleriot.javaBean.UsuarioPojo;
 
 public class PortadaManuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -23,6 +26,11 @@ public class PortadaManuActivity extends AppCompatActivity
     private LinearLayout llAdvertencia;
     private LinearLayout llPlayas;
     private LinearLayout llIr;
+
+    private TextView tvAcciones;
+    private TextView tvAdvertencia;
+    private TextView tvPlayas;
+    private TextView tvIr;
 
     private RelativeLayout rlFragmentContent;
 
@@ -36,18 +44,23 @@ public class PortadaManuActivity extends AppCompatActivity
         llPlayas = findViewById(R.id.llPlayas);
         llIr = findViewById(R.id.llIr);
 
+        tvAcciones = findViewById(R.id.tvAcciones);
+        tvAdvertencia = findViewById(R.id.tvAdvertencia);
+        tvPlayas = findViewById(R.id.tvPlayas);
+        tvIr = findViewById(R.id.tvIr);
+
         rlFragmentContent = findViewById(R.id.rlFragmentContent);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         // Controladores para la barra de menú
@@ -66,6 +79,7 @@ public class PortadaManuActivity extends AppCompatActivity
                 FragmentTransaction ft = fm.beginTransaction();
                 ft.replace(R.id.rlFragmentContent, new AccionesFragment());
                 ft.commit();
+                contenidoSeleccionado(R.color.textColor_selected, R.color.textColor_Whiite, R.color.textColor_Whiite, R.color.textColor_Whiite);
             }
         });
     }
@@ -79,6 +93,7 @@ public class PortadaManuActivity extends AppCompatActivity
                 FragmentTransaction ft = fm.beginTransaction();
                 ft.replace(R.id.rlFragmentContent, new AdvertenciaFragment());
                 ft.commit();
+                contenidoSeleccionado(R.color.textColor_Whiite, R.color.textColor_selected, R.color.textColor_Whiite, R.color.textColor_Whiite);
             }
         });
     }
@@ -88,6 +103,7 @@ public class PortadaManuActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 // TODO PlayasFragment
+                contenidoSeleccionado(R.color.textColor_Whiite, R.color.textColor_Whiite, R.color.textColor_selected, R.color.textColor_Whiite);
             }
         });
     }
@@ -97,13 +113,21 @@ public class PortadaManuActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 // TODO IrFragment
+                contenidoSeleccionado(R.color.textColor_Whiite, R.color.textColor_Whiite, R.color.textColor_Whiite, R.color.textColor_selected);
             }
         });
     }
 
+    private void contenidoSeleccionado(int colorAcciones, int colorAdvertencia, int colorPlayas, int colorIr) {
+        tvAcciones.setTextColor(getResources().getColor(colorAcciones));
+        tvAdvertencia.setTextColor(getResources().getColor(colorAdvertencia));
+        tvPlayas.setTextColor(getResources().getColor(colorPlayas));
+        tvIr.setTextColor(getResources().getColor(colorIr));
+    }
+
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -125,10 +149,8 @@ public class PortadaManuActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
 }

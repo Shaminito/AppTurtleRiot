@@ -40,6 +40,10 @@ public class UsuarioPojo implements Parcelable {
         }
     };
 
+    public String getUser() {
+        return user;
+    }
+
     public String getEmail() {
         return email;
     }

@@ -11,4 +11,6 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="margenes_menu">5dp</dimen>
     <dimen name="margin_bottom_ll">30dp</dimen>
+    <dimen name="padding_imagen">100dp</dimen>
+    <dimen name="padding_fondo2">15dp</dimen>
 </resources>

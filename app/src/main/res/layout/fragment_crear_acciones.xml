@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/flCrearAcciones"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding_fondo2"
+    tools:context=".acciones.CrearAccionesFragment">
+
+    <LinearLayout
+        android:id="@+id/llCrearSeguidos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/llCrearSeguidos2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivAccionesSeguidos"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/padding_imagen"
+                android:src="@drawable/btn_crear_acciones" />
+
+            <TextView
+                android:id="@+id/tvAccionesSeguidos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/life_s_a_beach"
+                android:text="@string/txt_tvCrearAcciones"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlCrearAcciones"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin_et_top">
+
+            <LinearLayout
+                android:id="@+id/llSubirFoto"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivSubirFoto"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/images" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/life_s_a_beach"
+                    android:text="@string/txt_tvSubirImagen"
+                    android:textAlignment="center"
+                    android:textColor="@color/color_txt_crearAcciones"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="130dp"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvTituloACC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/life_s_a_beach"
+                    android:text="@string/txt_tvTituloACC"
+                    android:textColor="@color/color_txt_crearAcciones"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/etTituloACC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/tvDescripcionACC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/life_s_a_beach"
+                    android:text="@string/txt_tvDescripcionACC"
+                    android:textColor="@color/color_txt_crearAcciones"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/etDescripcionACC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/tvUbicacionACC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/life_s_a_beach"
+                    android:text="@string/tvUbicacionACC"
+                    android:textColor="@color/color_txt_crearAcciones"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/etUbicacionACC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/tvFecha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/life_s_a_beach"
+                    android:text="@string/txt_tvFecha"
+                    android:textColor="@color/color_txt_crearAcciones"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/etFecha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ivCrearAcciones"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="124dp"
+                android:layout_marginBottom="0dp"
+                android:src="@drawable/torutga_ok" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

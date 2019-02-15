@@ -84,7 +84,7 @@ public class PantallaInicioFragment extends Fragment {
                             if (task.isSuccessful()) {
                                 autenticacion.setUser(autenticacion.getFba().getCurrentUser());
                                 Intent i = new Intent(getContext(),PortadaManuActivity.class);
-                                //i.putExtra("USER",autenticacion.getUser().getEmail());
+                                i.putExtra("USER",autenticacion.getFba().getCurrentUser().getEmail());
                                 startActivity(i);
                             } else {
                                 Toast.makeText(getContext(), getString(R.string.toast_no_accede), Toast.LENGTH_SHORT).show();
