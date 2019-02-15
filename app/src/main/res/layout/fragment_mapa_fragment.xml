@@ -8,11 +8,51 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-        <fragment
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:id="@+id/frg"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
+    <fragment
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:id="@+id/frg"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        tools:context=".mapa_fragment"/>
 
-            />
+        <TextView
+            android:id="@+id/latitude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="Latitud:"
+            android:textSize="18sp" >
+            <TextView
+                android:id="@+id/latitude_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/latitude"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/latitude"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/longitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="Longitud:"
+                android:layout_marginTop="24dp"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/longitude_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/longitude"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/longitude"
+                android:textSize="16sp"/>
+        </TextView>
+
+
+
+
+
+
 </RelativeLayout>
