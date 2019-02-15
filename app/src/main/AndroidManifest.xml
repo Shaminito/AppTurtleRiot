@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.a21746033.appturtleriot">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+
+        <!--
+         CLAVE API GEOLOCALIZACION GOOGLE SERVICES
+         -->
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCb-FS3oOwh2ZNgRdld4yyGXpsYlKdl5iM"/>
+
+
+
         <activity
             android:name=".PortadaManuActivity"
             android:label="@string/title_activity_portada_manu"
@@ -21,7 +36,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterUserActivity" />
-        <activity android:name=".AccionesActivity"></activity>
+        <activity android:name=".AccionesActivity" />
     </application>
+
+
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true"/>
+
+
 
 </manifest>

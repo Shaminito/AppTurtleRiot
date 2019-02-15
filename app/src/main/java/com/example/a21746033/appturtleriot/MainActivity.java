@@ -2,6 +2,7 @@ package com.example.a21746033.appturtleriot;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -53,8 +54,20 @@ public class MainActivity extends AppCompatActivity {
             }
         }, 5300);
     }
-}
 
+
+    public void addFragment(Fragment fragment, boolean addToBackStack, String tag) {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        if(addToBackStack){
+            ft.addToBackStack(tag);
+        }
+        ft.replace(R.id.rlFragmentContent,fragment,tag);
+        ft.commitAllowingStateLoss();
+
+
+    }
+}
 
 //CHILDEVENTLISTENER
 /*
