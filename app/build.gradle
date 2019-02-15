@@ -50,14 +50,22 @@ dependencies {
 
     //glide
     //implementation 'com.yalantis:ucrop:2.2.2'
+
     implementation 'com.github.bumptech.glide:glide:4.7.1'
     implementation 'com.github.bumptech.glide:annotations:4.7.1'
     implementation('com.github.bumptech.glide:okhttp3-integration:4.0.0') {
         exclude group: 'glide-parent'
     }
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+
+
+    //GPS google
+
     implementation 'com.google.android.gms:play-services-base:15.0.1'
     implementation 'com.google.android.gms:play-services-maps:15.0.1'
+
+    
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+
     implementation 'com.android.support:support-annotations:28.0.0'
     implementation 'androidx.annotation:annotation:1.0.1'
 
