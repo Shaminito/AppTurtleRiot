@@ -18,11 +18,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a21746033.appturtleriot.autenticacion.Autenticacion;
-import com.example.a21746033.appturtleriot.javaBean.UsuarioPojo;
+import com.example.a21746033.appturtleriot.javaBean.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class PantallaInicioFragment extends Fragment {
@@ -113,7 +112,7 @@ public class PantallaInicioFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == REGISTRAR_CUENTA){
             if(resultCode == getActivity().RESULT_OK){
-                UsuarioPojo usuario = data.getParcelableExtra(getString(R.string.REG_USUARIO));
+                Usuario usuario = data.getParcelableExtra(getString(R.string.REG_USUARIO));
                 String correo = usuario.getEmail();
                 String passwd = usuario.getPassword();
                 autenticacion.getFba().createUserWithEmailAndPassword(correo, passwd).addOnCompleteListener((Activity) v.getContext(), new OnCompleteListener<AuthResult>() {

@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.a21746033.appturtleriot.javaBean.UsuarioPojo;
+import com.example.a21746033.appturtleriot.javaBean.Usuario;
 
 public class RegisterUserActivity extends AppCompatActivity {
 
@@ -19,7 +19,7 @@ public class RegisterUserActivity extends AppCompatActivity {
     private String correo;
     private String passwd;
 
-    UsuarioPojo usuario;
+    Usuario usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,7 @@ public class RegisterUserActivity extends AppCompatActivity {
         }
         correo = etRegUserEmail.getText().toString().trim();
         passwd = etPassword.getText().toString().trim();
-        usuario = new UsuarioPojo(userNom, correo, passwd);
+        usuario = new Usuario(userNom, correo, passwd);
         if(verificarDatos()){
             Intent i = getIntent();
             i.putExtra(getString(R.string.REG_USUARIO),usuario);

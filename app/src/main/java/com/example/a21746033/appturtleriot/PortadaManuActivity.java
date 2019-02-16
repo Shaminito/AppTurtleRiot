@@ -15,9 +15,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.a21746033.appturtleriot.javaBean.UsuarioPojo;
 
 public class PortadaManuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

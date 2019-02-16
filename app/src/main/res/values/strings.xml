@@ -45,10 +45,10 @@
     <string name="txt_tvBanderas">Banderas</string>
     <string name="txt_tvCalificacion">Calificacion</string>
     <string name="txt_tvBuscarACC">Buscar Acciones</string>
-    <string name="txt_tvSubirImagen">SUBIR IMAGEN</string>
-    <string name="txt_tvTituloACC">TITULO DE LA ACCION</string>
-    <string name="txt_tvDescripcionACC">DESCRIPCION DE LA ACCION</string>
-    <string name="tvUbicacionACC">UBICACION</string>
-    <string name="txt_tvFecha">Fecha</string>
+    <string name="txt_tvTituloACC">TITULO:</string>
+    <string name="txt_tvFotoACC">FOTO</string>
+    <string name="txt_tvPlayaACC">PLAYA</string>
+    <string name="txt_tvFechaACC">FECHA:</string>
+    <string name="txt_tvDescripcionACC">DESCRIPCION:</string>
 
 </resources>

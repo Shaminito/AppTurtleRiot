@@ -3,40 +3,40 @@ package com.example.a21746033.appturtleriot.javaBean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class UsuarioPojo implements Parcelable {
+public class Usuario implements Parcelable {
 
     private String user;
     private String email;
     private String password;
 
-    public UsuarioPojo() {}
+    public Usuario() {}
 
-    public UsuarioPojo(String user, String email, String password) {
+    public Usuario(String user, String email, String password) {
         this.user = user;
         this.email = email;
         this.password = password;
     }
 
-    public UsuarioPojo(String email, String password) {
+    public Usuario(String email, String password) {
         this.email = email;
         this.password = password;
     }
 
-    protected UsuarioPojo(Parcel in) {
+    protected Usuario(Parcel in) {
         user = in.readString();
         email = in.readString();
         password = in.readString();
     }
 
-    public static final Creator<UsuarioPojo> CREATOR = new Creator<UsuarioPojo>() {
+    public static final Creator<Usuario> CREATOR = new Creator<Usuario>() {
         @Override
-        public UsuarioPojo createFromParcel(Parcel in) {
-            return new UsuarioPojo(in);
+        public Usuario createFromParcel(Parcel in) {
+            return new Usuario(in);
         }
 
         @Override
-        public UsuarioPojo[] newArray(int size) {
-            return new UsuarioPojo[size];
+        public Usuario[] newArray(int size) {
+            return new Usuario[size];
         }
     };
 
