@@ -16,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.a21746033.appturtleriot.fbDataBase.FireDataBase;
+
 public class PortadaManuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -30,6 +32,8 @@ public class PortadaManuActivity extends AppCompatActivity
     private TextView tvIr;
 
     private RelativeLayout rlFragmentContent;
+
+    private FireDataBase fdb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,8 @@ public class PortadaManuActivity extends AppCompatActivity
         tvIr = findViewById(R.id.tvIr);
 
         rlFragmentContent = findViewById(R.id.rlFragmentContent);
+
+        fdb = new FireDataBase();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -74,7 +80,11 @@ public class PortadaManuActivity extends AppCompatActivity
                 rlFragmentContent.removeAllViews();
                 FragmentManager fm = getSupportFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
-                ft.replace(R.id.rlFragmentContent, new AccionesFragment());
+
+                AccionesFragment accionesFragment = new AccionesFragment();
+                accionesFragment.setFdb(fdb);
+
+                ft.replace(R.id.rlFragmentContent, accionesFragment);
                 ft.commit();
                 contenidoSeleccionado(R.color.textColor_selected, R.color.textColor_Whiite, R.color.textColor_Whiite, R.color.textColor_Whiite);
             }

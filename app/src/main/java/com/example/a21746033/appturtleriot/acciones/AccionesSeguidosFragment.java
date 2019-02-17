@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.a21746033.appturtleriot.R;
+import com.example.a21746033.appturtleriot.fbDataBase.FireDataBase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,6 +16,8 @@ import com.example.a21746033.appturtleriot.R;
 public class AccionesSeguidosFragment extends Fragment {
 
     private View v;
+
+    private FireDataBase fdb;
 
     public AccionesSeguidosFragment() {}
 
@@ -24,4 +27,7 @@ public class AccionesSeguidosFragment extends Fragment {
         return v;
     }
 
+    public void setFdb(FireDataBase fdb) {
+        this.fdb = fdb;
+    }
 }

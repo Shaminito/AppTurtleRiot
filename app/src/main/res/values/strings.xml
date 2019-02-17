@@ -50,5 +50,8 @@
     <string name="txt_tvPlayaACC">PLAYA</string>
     <string name="txt_tvFechaACC">FECHA:</string>
     <string name="txt_tvDescripcionACC">DESCRIPCION:</string>
+    <string name="toast_AccionVacio">Los campos deben ser rellenables</string>
 
+    <string name="txt_tvPlayaTitle">Playa:</string>
+    <string name="txt_tvPropietarioTitle">Propietario:</string>
 </resources>

@@ -17,12 +17,16 @@ public class Accion {
     //DESCRIPCIÓN
     private String descripcion;
 
+    public Accion(){}
+
     public Accion(String propietario, String titulo, String fecha, String descripcion){
         this.propietario = propietario;
         this.titulo = titulo;
         this.fecha = fecha;
         this.descripcion = descripcion;
     }
+
+    // Métodos utilizados para el firebase
 
     public String getPropietario() {
         return propietario;

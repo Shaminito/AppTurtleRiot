@@ -14,6 +14,7 @@ import com.example.a21746033.appturtleriot.acciones.AccionesSeguidosFragment;
 import com.example.a21746033.appturtleriot.acciones.AdministrarAccionesFragment;
 import com.example.a21746033.appturtleriot.acciones.BuscarAccionesFragment;
 import com.example.a21746033.appturtleriot.acciones.CrearAccionesFragment;
+import com.example.a21746033.appturtleriot.fbDataBase.FireDataBase;
 
 public class AccionesFragment extends Fragment {
 
@@ -23,6 +24,8 @@ public class AccionesFragment extends Fragment {
     private LinearLayout llAccionesSeguidos;
     private LinearLayout llCrearAcciones;
     private LinearLayout llAdministrarAcciones;
+
+    private FireDataBase fdb;
 
     public AccionesFragment() {}
     @Override
@@ -42,13 +45,21 @@ public class AccionesFragment extends Fragment {
         return v;
     }
 
+    public void setFdb(FireDataBase fdb) {
+        this.fdb = fdb;
+    }
+
     private void c_llBuscarAcciones() {
         llBuscarAcciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
-                ft.replace(R.id.rlFragmentContent, new BuscarAccionesFragment());
+
+                BuscarAccionesFragment buscarAccionesFragment = new BuscarAccionesFragment();
+                buscarAccionesFragment.setFdb(fdb);
+
+                ft.replace(R.id.rlFragmentContent, buscarAccionesFragment);
                 ft.commit();
             }
         });
@@ -61,7 +72,11 @@ public class AccionesFragment extends Fragment {
             public void onClick(View v) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
-                ft.replace(R.id.rlFragmentContent, new AccionesSeguidosFragment());
+
+                AccionesSeguidosFragment accionesSeguidosFragment = new AccionesSeguidosFragment();
+                accionesSeguidosFragment.setFdb(fdb);
+
+                ft.replace(R.id.rlFragmentContent, accionesSeguidosFragment);
                 ft.commit();
             }
         });
@@ -73,7 +88,11 @@ public class AccionesFragment extends Fragment {
             public void onClick(View v) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
-                ft.replace(R.id.rlFragmentContent, new CrearAccionesFragment());
+
+                CrearAccionesFragment crearAccionesFragment = new CrearAccionesFragment();
+                crearAccionesFragment.setFdb(fdb);
+
+                ft.replace(R.id.rlFragmentContent, crearAccionesFragment);
                 ft.commit();
             }
         });
@@ -85,7 +104,11 @@ public class AccionesFragment extends Fragment {
             public void onClick(View v) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
-                ft.replace(R.id.rlFragmentContent, new AdministrarAccionesFragment());
+
+                AdministrarAccionesFragment administrarAccionesFragment = new AdministrarAccionesFragment();
+                administrarAccionesFragment.setFdb(fdb);
+
+                ft.replace(R.id.rlFragmentContent, administrarAccionesFragment);
                 ft.commit();
             }
         });

@@ -44,8 +44,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:fontFamily="@font/life_s_a_beach"
                 android:inputType="textPersonName" />
         </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvBuscarAcciones"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin_et_top" />
 
     </LinearLayout>
 </FrameLayout>
