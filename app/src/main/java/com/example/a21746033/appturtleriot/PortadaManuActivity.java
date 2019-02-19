@@ -33,7 +33,7 @@ public class PortadaManuActivity extends AppCompatActivity
 
     private RelativeLayout rlFragmentContent;
 
-    private FireDataBase fdb;
+    //private FireDataBase fdb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class PortadaManuActivity extends AppCompatActivity
 
         rlFragmentContent = findViewById(R.id.rlFragmentContent);
 
-        fdb = new FireDataBase();
+        //fdb = new FireDataBase();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -82,7 +82,7 @@ public class PortadaManuActivity extends AppCompatActivity
                 FragmentTransaction ft = fm.beginTransaction();
 
                 AccionesFragment accionesFragment = new AccionesFragment();
-                accionesFragment.setFdb(fdb);
+                //accionesFragment.setFdb(fdb);
 
                 ft.replace(R.id.rlFragmentContent, accionesFragment);
                 ft.commit();

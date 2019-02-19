@@ -46,6 +46,7 @@ public class BuscarAccionesFragment extends Fragment {
         llm = new LinearLayoutManager(getActivity());
         adaptador = new BuscarAccionesAdaptador(listaAcciones);
 
+        fdb = new FireDataBase();
         fdb.setListaAcciones(listaAcciones);
         fdb.setAdaptador(adaptador);
 
@@ -58,7 +59,5 @@ public class BuscarAccionesFragment extends Fragment {
         return v;
     }
 
-    public void setFdb(FireDataBase fdb) {
-        this.fdb = fdb;
-    }
+    //public void setFdb(FireDataBase fdb) {this.fdb = fdb;}
 }

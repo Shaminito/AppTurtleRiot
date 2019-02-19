@@ -25,7 +25,7 @@ public class AccionesFragment extends Fragment {
     private LinearLayout llCrearAcciones;
     private LinearLayout llAdministrarAcciones;
 
-    private FireDataBase fdb;
+    //private FireDataBase fdb;
 
     public AccionesFragment() {}
     @Override
@@ -45,9 +45,7 @@ public class AccionesFragment extends Fragment {
         return v;
     }
 
-    public void setFdb(FireDataBase fdb) {
-        this.fdb = fdb;
-    }
+    //public void setFdb(FireDataBase fdb) {this.fdb = fdb;}
 
     private void c_llBuscarAcciones() {
         llBuscarAcciones.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +55,7 @@ public class AccionesFragment extends Fragment {
                 FragmentTransaction ft = fm.beginTransaction();
 
                 BuscarAccionesFragment buscarAccionesFragment = new BuscarAccionesFragment();
-                buscarAccionesFragment.setFdb(fdb);
+                //buscarAccionesFragment.setFdb(fdb);
 
                 ft.replace(R.id.rlFragmentContent, buscarAccionesFragment);
                 ft.commit();
@@ -74,7 +72,7 @@ public class AccionesFragment extends Fragment {
                 FragmentTransaction ft = fm.beginTransaction();
 
                 AccionesSeguidosFragment accionesSeguidosFragment = new AccionesSeguidosFragment();
-                accionesSeguidosFragment.setFdb(fdb);
+                //accionesSeguidosFragment.setFdb(fdb);
 
                 ft.replace(R.id.rlFragmentContent, accionesSeguidosFragment);
                 ft.commit();
@@ -90,7 +88,7 @@ public class AccionesFragment extends Fragment {
                 FragmentTransaction ft = fm.beginTransaction();
 
                 CrearAccionesFragment crearAccionesFragment = new CrearAccionesFragment();
-                crearAccionesFragment.setFdb(fdb);
+                //crearAccionesFragment.setFdb(fdb);
 
                 ft.replace(R.id.rlFragmentContent, crearAccionesFragment);
                 ft.commit();
@@ -106,7 +104,7 @@ public class AccionesFragment extends Fragment {
                 FragmentTransaction ft = fm.beginTransaction();
 
                 AdministrarAccionesFragment administrarAccionesFragment = new AdministrarAccionesFragment();
-                administrarAccionesFragment.setFdb(fdb);
+                //administrarAccionesFragment.setFdb(fdb);
 
                 ft.replace(R.id.rlFragmentContent, administrarAccionesFragment);
                 ft.commit();
