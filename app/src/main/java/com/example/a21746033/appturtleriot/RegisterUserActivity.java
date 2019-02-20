@@ -35,7 +35,18 @@ public class RegisterUserActivity extends AppCompatActivity {
 
     public void c_btnRegistrar(View v){
         if(etRegUserNombre.getText().toString().isEmpty()){
-            userNom = "ANONIMO";
+            String userEmail = etRegUserEmail.getText().toString().trim();
+            int pos = 0;
+            boolean cont = true;
+            while(pos < userEmail.length() && cont){
+                if(userEmail.charAt(pos) == '@'){
+                    cont = false;
+                }
+                else{
+                    userNom += userEmail.charAt(pos);
+                }
+                pos++;
+            }
         }
         else{
             userNom = etRegUserNombre.getText().toString().trim();

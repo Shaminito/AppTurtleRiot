@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,15 +15,23 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a21746033.appturtleriot.autenticacion.Autenticacion;
+import com.example.a21746033.appturtleriot.javaBean.Accion;
 import com.example.a21746033.appturtleriot.javaBean.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class PantallaInicioFragment extends Fragment {
 
@@ -31,6 +40,9 @@ public class PantallaInicioFragment extends Fragment {
     private TextView tvTitulo;
     private LinearLayout llMain;
 
+    private RelativeLayout rlCargando;
+    private ProgressBar pbCargando;
+
     private Button btnConectar;
     private TextView tvNuevaCuenta;
 
@@ -38,6 +50,11 @@ public class PantallaInicioFragment extends Fragment {
 
     private EditText etLoginUser;
     private EditText etLoginPasswd;
+
+    private DatabaseReference dbR;
+    private ChildEventListener cel;
+
+    private String usuario;
 
     public static final int REGISTRAR_CUENTA = 1;
 
@@ -55,6 +72,8 @@ public class PantallaInicioFragment extends Fragment {
         tvNuevaCuenta = v.findViewById(R.id.tvNuevaCuenta);
         etLoginUser = v.findViewById(R.id.etLoginUser);
         etLoginPasswd = v.findViewById(R.id.etLoginPasswd);
+        rlCargando = v.findViewById(R.id.rlCargando);
+        pbCargando = v.findViewById(R.id.pbCargando);
 
         Animation myanim = AnimationUtils.loadAnimation(v.getContext(), R.anim.anim_pantalla_inicio);
 
@@ -64,6 +83,9 @@ public class PantallaInicioFragment extends Fragment {
         c_btnConectar();
         c_tvNuevaCuenta();
 
+        rlCargando.setVisibility(View.INVISIBLE);
+        pbCargando.setVisibility(View.INVISIBLE);
+
         return v;
     }
 
@@ -71,6 +93,8 @@ public class PantallaInicioFragment extends Fragment {
         btnConectar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                rlCargando.setVisibility(View.VISIBLE);
+                pbCargando.setVisibility(View.VISIBLE);
                 autenticacion.obtenerCuenta(etLoginUser.getText().toString().trim(), etLoginPasswd.getText().toString().trim());
                 autenticarUsuario();
             }
@@ -82,9 +106,9 @@ public class PantallaInicioFragment extends Fragment {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 autenticacion.setUser(autenticacion.getFba().getCurrentUser());
-                                Intent i = new Intent(getContext(),PortadaManuActivity.class);
-                                i.putExtra("USER",autenticacion.getFba().getCurrentUser().getEmail());
-                                startActivity(i);
+
+                                dbR = FirebaseDatabase.getInstance().getReference().child("usuarios");
+                                addChildEventistener();
                             } else {
                                 Toast.makeText(getContext(), getString(R.string.toast_no_accede), Toast.LENGTH_SHORT).show();
                             }
@@ -95,6 +119,44 @@ public class PantallaInicioFragment extends Fragment {
                 }
             }
         });
+    }
+
+    private void addChildEventistener() {
+        if(cel == null){
+            cel = new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    Usuario user = dataSnapshot.getValue(Usuario.class);
+                    if(autenticacion.getFba().getCurrentUser().getEmail().equals(user.getEmail())){
+                        usuario = user.getUser();
+                        Intent i = new Intent(getContext(),PortadaManuActivity.class);
+                        i.putExtra("USER",usuario);
+                        startActivity(i);
+                    }
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    //TODO CHANGED
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                    //TODO REMOVED
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            };
+            dbR.addChildEventListener(cel);
+        }
     }
 
     private void c_tvNuevaCuenta() {
@@ -112,9 +174,9 @@ public class PantallaInicioFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == REGISTRAR_CUENTA){
             if(resultCode == getActivity().RESULT_OK){
-                Usuario usuario = data.getParcelableExtra(getString(R.string.REG_USUARIO));
+                final Usuario usuario = data.getParcelableExtra(getString(R.string.REG_USUARIO));
                 String correo = usuario.getEmail();
-                String passwd = usuario.getPassword();
+                String passwd = usuario.obtenerContrasenia();
                 autenticacion.getFba().createUserWithEmailAndPassword(correo, passwd).addOnCompleteListener((Activity) v.getContext(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -122,6 +184,11 @@ public class PantallaInicioFragment extends Fragment {
                             FirebaseUser user = autenticacion.getFba().getCurrentUser();
                             Toast.makeText(getContext(), getString(R.string.toast_CreateUserSucefully), Toast.LENGTH_SHORT).show();
                             etLoginUser.setText(user.getEmail());
+
+                            DatabaseReference dbR;
+
+                            dbR = FirebaseDatabase.getInstance().getReference().child("usuarios");
+                            dbR.child(dbR.push().getKey()).setValue(usuario);
                         }
                     }
                 });

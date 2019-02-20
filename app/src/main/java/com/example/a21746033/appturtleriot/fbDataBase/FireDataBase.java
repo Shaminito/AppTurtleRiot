@@ -39,7 +39,9 @@ public class FireDataBase {
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                     Accion accion = dataSnapshot.getValue(Accion.class);
-                    listaAcciones.add(accion);
+                    //if(accion.getPropietario() != ){
+                        listaAcciones.add(accion);
+                    //}
                     adaptador.notifyItemInserted(listaAcciones.size() - 1);
                 }
 

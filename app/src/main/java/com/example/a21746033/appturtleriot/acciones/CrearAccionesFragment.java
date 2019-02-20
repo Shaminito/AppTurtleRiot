@@ -2,6 +2,7 @@ package com.example.a21746033.appturtleriot.acciones;
 
 
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -22,11 +23,11 @@ public class CrearAccionesFragment extends Fragment {
 
     private View v;
 
-    private EditText etTituloACC;
+    private TextInputLayout tilTituloACC;
     private ImageView ivFotoACC;
     private ImageView ivPlayaACC;
     private EditText etFechaACC;
-    private EditText etDescripcionACC;
+    private TextInputLayout tilDescripcionACC;
 
     private ImageView ivCrearAcciones;
 
@@ -40,27 +41,23 @@ public class CrearAccionesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_crear_acciones, container, false);
 
-        etTituloACC = v.findViewById(R.id.etTituloACC);
+        tilTituloACC = v.findViewById(R.id.tilTituloACC);
         ivFotoACC = v.findViewById(R.id.ivFotoACC);
         ivPlayaACC = v.findViewById(R.id.ivPlayaACC);
         etFechaACC = v.findViewById(R.id.etFechaACC);
-        etDescripcionACC = v.findViewById(R.id.etDescripcionACC);
+        tilDescripcionACC = v.findViewById(R.id.tilDescripcionACC);
 
         ivCrearAcciones = v.findViewById(R.id.ivCrearAcciones);
 
         rlFragmentContent = getActivity().findViewById(R.id.rlFragmentContent);
 
-        //fdb = new FireDataBase();
+        fdb = new FireDataBase();
 
         c_ivFotoACC();
         c_ivPlayaACC();
         c_ivCrearAcciones();
 
         return v;
-    }
-
-    public void setFdb(FireDataBase fdb) {
-        this.fdb = fdb;
     }
 
     private void c_ivFotoACC() {
@@ -90,7 +87,7 @@ public class CrearAccionesFragment extends Fragment {
                 //NOMBRE
                 String propietario = getActivity().getIntent().getStringExtra("USER");
                 //TITULO
-                String titulo = etTituloACC.getText().toString();
+                String titulo = tilTituloACC.getEditText().getText().toString();
                 //FOTO
                 //Drawable foto =
                 //PLAYA
@@ -98,7 +95,7 @@ public class CrearAccionesFragment extends Fragment {
                 //FECHA
                 String fecha = etFechaACC.getText().toString();
                 //DESCRIPCIÓN
-                String descripcion = etDescripcionACC.getText().toString();
+                String descripcion = tilDescripcionACC.getEditText().getText().toString();
                 if(verificarAccion()){
                     fdb.guardarAccion(new Accion(propietario,titulo,fecha,descripcion));
 
@@ -116,7 +113,7 @@ public class CrearAccionesFragment extends Fragment {
     }
 
     private boolean verificarAccion() {
-        if(etTituloACC.getText().toString().isEmpty() || etFechaACC.getText().toString().isEmpty() || etDescripcionACC.getText().toString().isEmpty()){
+        if(tilTituloACC.getEditText().getText().toString().isEmpty() || etFechaACC.getText().toString().isEmpty() || tilDescripcionACC.getEditText().getText().toString().isEmpty()){
             return false;
         }
         else{

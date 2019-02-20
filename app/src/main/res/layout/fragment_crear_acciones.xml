@@ -51,22 +51,20 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tvTituloACC"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilTituloACC"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/life_s_a_beach"
-                    android:text="@string/txt_tvTituloACC"
-                    android:textColor="@color/color_txt_crearAcciones"
-                    android:textSize="18sp" />
+                    android:layout_height="match_parent">
 
-                <EditText
-                    android:id="@+id/etTituloACC"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:fontFamily="@font/life_s_a_beach"
-                    android:inputType="textPersonName" />
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/life_s_a_beach"
+                        android:hint="@string/txt_tvTituloACC"
+                        android:textColorHint="@color/color_txt_crearAcciones"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </android.support.design.widget.TextInputLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -87,7 +85,8 @@
                             android:fontFamily="@font/life_s_a_beach"
                             android:text="@string/txt_tvFotoACC"
                             android:textColor="@color/color_txt_crearAcciones"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
 
                         <ImageView
                             android:id="@+id/ivFotoACC"
@@ -110,7 +109,8 @@
                             android:fontFamily="@font/life_s_a_beach"
                             android:text="@string/txt_tvPlayaACC"
                             android:textColor="@color/color_txt_crearAcciones"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
 
                         <ImageView
                             android:id="@+id/ivPlayaACC"
@@ -136,7 +136,8 @@
                         android:text="@string/txt_tvFechaACC"
                         android:textAlignment="center"
                         android:textColor="@color/color_txt_crearAcciones"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/etFechaACC"
@@ -147,21 +148,20 @@
                         android:inputType="date" />
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tvDescripcionACC"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilDescripcionACC"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/life_s_a_beach"
-                    android:text="@string/txt_tvDescripcionACC"
-                    android:textColor="@color/color_txt_crearAcciones"
-                    android:textSize="18sp" />
+                    android:layout_height="match_parent">
 
-                <EditText
-                    android:id="@+id/etDescripcionACC"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:ems="10"
-                    android:inputType="textMultiLine" />
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/life_s_a_beach"
+                        android:hint="@string/txt_tvDescripcionACC"
+                        android:textColorHint="@color/color_txt_crearAcciones"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </android.support.design.widget.TextInputLayout>
 
                 <ImageView
                     android:id="@+id/ivCrearAcciones"

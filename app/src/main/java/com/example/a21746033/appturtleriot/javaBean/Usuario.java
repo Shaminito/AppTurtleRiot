@@ -3,6 +3,8 @@ package com.example.a21746033.appturtleriot.javaBean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+
 public class Usuario implements Parcelable {
 
     private String user;
@@ -13,11 +15,6 @@ public class Usuario implements Parcelable {
 
     public Usuario(String user, String email, String password) {
         this.user = user;
-        this.email = email;
-        this.password = password;
-    }
-
-    public Usuario(String email, String password) {
         this.email = email;
         this.password = password;
     }
@@ -48,7 +45,7 @@ public class Usuario implements Parcelable {
         return email;
     }
 
-    public String getPassword() {
+    public String obtenerContrasenia() {
         return password;
     }
 

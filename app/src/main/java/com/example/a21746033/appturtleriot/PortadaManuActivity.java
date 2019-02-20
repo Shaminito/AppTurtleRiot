@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.a21746033.appturtleriot.fbDataBase.FireDataBase;
 
@@ -26,12 +27,16 @@ public class PortadaManuActivity extends AppCompatActivity
     private LinearLayout llPlayas;
     private LinearLayout llIr;
 
+    private TextView tvMenuNombre;
+
     private TextView tvAcciones;
     private TextView tvAdvertencia;
     private TextView tvPlayas;
     private TextView tvIr;
 
     private RelativeLayout rlFragmentContent;
+
+    private String nombre;
 
     //private FireDataBase fdb;
 
@@ -40,10 +45,15 @@ public class PortadaManuActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_portada_manu);
 
+        nombre = getIntent().getStringExtra("USER");
+
         llAcciones = findViewById(R.id.llAcciones);
         llAdvertencia = findViewById(R.id.llAdvertencia);
         llPlayas = findViewById(R.id.llPlayas);
         llIr = findViewById(R.id.llIr);
+
+        tvMenuNombre = findViewById(R.id.tvMenuNombre);
+        tvMenuNombre.setText(nombre);
 
         tvAcciones = findViewById(R.id.tvAcciones);
         tvAdvertencia = findViewById(R.id.tvAdvertencia);
@@ -153,11 +163,13 @@ public class PortadaManuActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
+        if(item.getItemId() == R.id.nav_config){
+
+        }
+
         return true;
     }
 }
