@@ -5,6 +5,7 @@ import android.test.TouchUtils;
 import android.widget.LinearLayout;
 
 import com.turtleriot.PortadaManuActivity;
+import com.turtleriot.R;
 
 /**
  * Instrumented test, which will execute on an Android device.
