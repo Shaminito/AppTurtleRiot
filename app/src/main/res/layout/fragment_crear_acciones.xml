@@ -127,24 +127,45 @@
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_fondo2">
 
-                    <TextView
-                        android:id="@+id/tvFechaACC"
-                        android:layout_width="1dp"
+                    <ImageButton
+                        android:id="@+id/ib_obtener_fecha"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/life_s_a_beach"
-                        android:text="@string/txt_tvFechaACC"
-                        android:textAlignment="center"
-                        android:textColor="@color/color_txt_crearAcciones"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:src="@android:drawable/ic_menu_day" />
 
                     <EditText
-                        android:id="@+id/etFechaACC"
+                        android:id="@+id/et_mostrar_fecha_picker"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
+                        android:hint="@string/fecha_datos"
+                        android:inputType="date" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_fondo2">
+
+                    <ImageButton
+                        android:id="@+id/ib_obtener_hora"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@android:drawable/ic_lock_idle_alarm" />
+
+                    <EditText
+                        android:id="@+id/et_mostrar_hora_picker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="@string/hora_datos"
                         android:inputType="date" />
                 </LinearLayout>
 
