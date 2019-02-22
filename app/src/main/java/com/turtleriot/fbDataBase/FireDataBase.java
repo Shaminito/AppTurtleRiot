@@ -69,6 +69,10 @@ public class FireDataBase {
         }
     }
 
+    public DatabaseReference getDbR() {
+        return dbR;
+    }
+
     public void setListaAcciones(ArrayList<Accion> listaAcciones) {
         this.listaAcciones = listaAcciones;
     }

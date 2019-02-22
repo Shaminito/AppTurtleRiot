@@ -1,6 +1,8 @@
 package com.turtleriot.acciones;
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
@@ -14,10 +16,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.turtleriot.AccionesFragment;
 import com.turtleriot.R;
 import com.turtleriot.fbDataBase.FireDataBase;
 import com.turtleriot.javaBean.Accion;
+import com.turtleriot.storage.StorageFotos;
 
 public class CrearAccionesFragment extends Fragment {
 
@@ -34,6 +38,10 @@ public class CrearAccionesFragment extends Fragment {
     private RelativeLayout rlFragmentContent;
 
     private FireDataBase fdb;
+
+    //FOTOS
+    private StorageFotos sfFotoAcciones;
+    private String foto;
 
     public CrearAccionesFragment() {}
 
@@ -53,6 +61,8 @@ public class CrearAccionesFragment extends Fragment {
 
         fdb = new FireDataBase();
 
+        sfFotoAcciones = new StorageFotos();
+
         c_ivFotoACC();
         c_ivPlayaACC();
         c_ivCrearAcciones();
@@ -64,9 +74,27 @@ public class CrearAccionesFragment extends Fragment {
         ivFotoACC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO SUBIR IMAGEN
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/jpeg");
+                intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+                startActivityForResult(Intent.createChooser(intent,
+                        "Complete la acción usando"), StorageFotos.RC_FOTO_PLAYA);
             }
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == StorageFotos.RC_FOTO_PLAYA){
+            if(resultCode == Activity.RESULT_OK){
+                sfFotoAcciones.subirFoto(data, getActivity());
+                foto = sfFotoAcciones.getFoto();
+                Glide.with(ivFotoACC.getContext())
+                        .load(foto)
+                        .into(ivFotoACC);
+            }
+        }
     }
 
     private void c_ivPlayaACC() {
@@ -88,8 +116,6 @@ public class CrearAccionesFragment extends Fragment {
                 String propietario = getActivity().getIntent().getStringExtra("USER");
                 //TITULO
                 String titulo = tilTituloACC.getEditText().getText().toString();
-                //FOTO
-                //Drawable foto =
                 //PLAYA
                 //Playa playa =
                 //FECHA
@@ -97,7 +123,7 @@ public class CrearAccionesFragment extends Fragment {
                 //DESCRIPCIÓN
                 String descripcion = tilDescripcionACC.getEditText().getText().toString();
                 if(verificarAccion()){
-                    fdb.guardarAccion(new Accion(propietario,titulo,fecha,descripcion));
+                    fdb.guardarAccion(new Accion(propietario,titulo,fecha,descripcion,foto));
 
                     rlFragmentContent.removeAllViews();
                     FragmentManager fm = getActivity().getSupportFragmentManager();
@@ -113,11 +139,6 @@ public class CrearAccionesFragment extends Fragment {
     }
 
     private boolean verificarAccion() {
-        if(tilTituloACC.getEditText().getText().toString().isEmpty() || etFechaACC.getText().toString().isEmpty() || tilDescripcionACC.getEditText().getText().toString().isEmpty()){
-            return false;
-        }
-        else{
-            return true;
-        }
+        return !tilTituloACC.getEditText().getText().toString().isEmpty() && !etFechaACC.getText().toString().isEmpty() && !tilDescripcionACC.getEditText().getText().toString().isEmpty();
     }
 }

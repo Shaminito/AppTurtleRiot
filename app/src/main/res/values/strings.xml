@@ -52,4 +52,5 @@
 
     <string name="txt_tvPlayaTitle">Playa:</string>
     <string name="txt_tvPropietarioTitle">Propietario:</string>
+    <string name="txt_tvUsuariosSeguidos">Usuarios Seguidos</string>
 </resources>

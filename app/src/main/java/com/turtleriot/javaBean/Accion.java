@@ -1,30 +1,59 @@
 package com.turtleriot.javaBean;
 
-public class Accion {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.util.ArrayList;
+
+public class Accion implements Parcelable {
 
     //NOMBRE
     private String propietario;
     //TITULO
     private String titulo;
     //FOTO
-    //private Drawable foto =
+    private String foto;
     //PLAYA
     //private Playa playa;
     //FECHA
     private String fecha;
     //DESCRIPCIÓN
     private String descripcion;
+    //USUARIOS SEGUIDOS
+    private ArrayList<Usuario> listaSeguidores = new ArrayList<>();;
 
     public Accion(){}
 
-    public Accion(String propietario, String titulo, String fecha, String descripcion){
+    public Accion(String propietario, String titulo, String fecha, String descripcion, String foto){
         this.propietario = propietario;
         this.titulo = titulo;
         this.fecha = fecha;
         this.descripcion = descripcion;
+        this.foto = foto;
     }
 
     // Métodos utilizados para el firebase
+
+    protected Accion(Parcel in) {
+        propietario = in.readString();
+        titulo = in.readString();
+        foto = in.readString();
+        fecha = in.readString();
+        descripcion = in.readString();
+        listaSeguidores = in.createTypedArrayList(Usuario.CREATOR);
+    }
+
+    public static final Creator<Accion> CREATOR = new Creator<Accion>() {
+        @Override
+        public Accion createFromParcel(Parcel in) {
+            return new Accion(in);
+        }
+
+        @Override
+        public Accion[] newArray(int size) {
+            return new Accion[size];
+        }
+    };
 
     public String getPropietario() {
         return propietario;
@@ -40,5 +69,24 @@ public class Accion {
 
     public String getDescripcion() {
         return descripcion;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(propietario);
+        dest.writeString(titulo);
+        dest.writeString(foto);
+        dest.writeString(fecha);
+        dest.writeString(descripcion);
+        dest.writeTypedList(listaSeguidores);
     }
 }

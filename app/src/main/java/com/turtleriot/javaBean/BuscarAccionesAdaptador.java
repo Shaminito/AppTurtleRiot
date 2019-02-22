@@ -5,9 +5,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.bumptech.glide.Glide;
 import com.turtleriot.R;
 
 import java.util.ArrayList;
@@ -20,25 +22,31 @@ public class BuscarAccionesAdaptador extends RecyclerView.Adapter<BuscarAcciones
     public static class MiViewHolder extends RecyclerView.ViewHolder{
 
         private TextView tvTituloBACC;
-        //private ImageView ivFotoBACC;
+        private ImageView ivFotoBACC;
         //private TextView tvPlayaBACC;
-        private TextView tvPropietarioBACC;
         private TextView tvFechaBACC;
 
         public MiViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTituloBACC = itemView.findViewById(R.id.tvTituloBACC);
-            //ivFotoBACC = itemView.findViewById(R.id.ivFotoBACC);
+            ivFotoBACC = itemView.findViewById(R.id.ivFotoBACC);
             //tvPlayaBACC = itemView.findViewById(R.id.tvPlayaBACC);
-            tvPropietarioBACC = itemView.findViewById(R.id.tvPropietarioBACC);
             tvFechaBACC = itemView.findViewById(R.id.tvFechaBACC);
         }
 
         public void bindAcciones(Accion accion){
             tvTituloBACC.setText(accion.getTitulo());
-            //ivFotoBACC.setText(accion.getFoto());
+            if(accion.getFoto() != null){
+                Glide.with(ivFotoBACC.getContext())
+                        .load(accion.getFoto())
+                        .into(ivFotoBACC);
+            }
+            else{
+                Glide.with(ivFotoBACC.getContext())
+                        .load(R.drawable.images)
+                        .into(ivFotoBACC);
+            }
             //tvPlayaBACC.settext(accion.getPlaya().getNombre());
-            tvPropietarioBACC.setText(accion.getPropietario());
             tvFechaBACC.setText(accion.getFecha());
         }
     }
