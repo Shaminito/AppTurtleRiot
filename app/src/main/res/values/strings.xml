@@ -53,5 +53,5 @@
     <string name="txt_tvPlayaTitle">Playa:</string>
     <string name="txt_tvPropietarioTitle">Propietario:</string>
     <string name="fecha_datos" >dd/mm/yyyy</string>
-    <string name="hora_datos">hh/mm</string>
+    <string name="hora_datos">hh:mm</string>
 </resources>

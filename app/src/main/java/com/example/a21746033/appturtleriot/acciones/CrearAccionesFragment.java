@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -50,7 +51,7 @@ public class CrearAccionesFragment extends Fragment {
     final int hora = ca.get(Calendar.HOUR_OF_DAY);
     final int minuto = ca.get(Calendar.MINUTE);
     //ventanas
-    EditText etFecha, etHora;
+    TextView etFecha, etHora;
     ImageButton ibObtenerFecha, ibObtenerHora;
 
 
@@ -68,7 +69,6 @@ public class CrearAccionesFragment extends Fragment {
         tilTituloACC = v.findViewById(R.id.tilTituloACC);
         ivFotoACC = v.findViewById(R.id.ivFotoACC);
         ivPlayaACC = v.findViewById(R.id.ivPlayaACC);
-        etFechaACC = v.findViewById(R.id.et_mostrar_fecha_picker);
         tilDescripcionACC = v.findViewById(R.id.tilDescripcionACC);
 
         ivCrearAcciones = v.findViewById(R.id.ivCrearAcciones);
@@ -97,8 +97,7 @@ public class CrearAccionesFragment extends Fragment {
             public void onClick(View v) {
                 recogerFecha();
 
-                {
-                }
+
             }
         });
         ibObtenerHora.setOnClickListener(new View.OnClickListener() {
@@ -125,7 +124,9 @@ public class CrearAccionesFragment extends Fragment {
                     AM_PM = "p.m.";
                 }
 
-                etHora.setText(horaFormateada + DOS_PUNTOS + minutoFormateado + " " + AM_PM);
+                String hora = horaFormateada + DOS_PUNTOS + minutoFormateado + " " + AM_PM;
+
+                etHora.setText(hora);
             }
 
         }, hora, minuto, false);
@@ -143,7 +144,8 @@ public class CrearAccionesFragment extends Fragment {
                 String diaFormateado = (dayOfMonth < 10)? CERO + String.valueOf(dayOfMonth):String.valueOf(dayOfMonth);
                 String mesFormateado = (mesActual < 10)? CERO + String.valueOf(mesActual):String.valueOf(mesActual);
 
-                etFecha.setText(diaFormateado + BARRA + mesFormateado + BARRA + year);
+                String fechaf = diaFormateado + BARRA + mesFormateado + BARRA + year;
+                etFecha.setText(fechaf);
 
             }
         },anio,mes,dia);
