@@ -1,4 +1,4 @@
-package com.example.a21746033.appturtleriot.javaBean;
+package com.turtleriot.javaBean;
 
 public class Playa {
 

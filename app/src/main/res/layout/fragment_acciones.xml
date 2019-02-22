@@ -5,7 +5,7 @@
     android:id="@+id/flAcciones"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AccionesFragment">
+    tools:context="com.turtleriot.AccionesFragment">
 
 
     <ScrollView

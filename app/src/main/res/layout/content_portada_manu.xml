@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".PortadaManuActivity"
+    tools:context="com.turtleriot.PortadaManuActivity"
     tools:showIn="@layout/app_bar_portada_manu">
 
     <LinearLayout

@@ -1,4 +1,4 @@
-package com.example.a21746033.appturtleriot.acciones;
+package com.turtleriot.acciones;
 
 
 import android.os.Bundle;
@@ -14,10 +14,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.example.a21746033.appturtleriot.AccionesFragment;
-import com.example.a21746033.appturtleriot.R;
-import com.example.a21746033.appturtleriot.fbDataBase.FireDataBase;
-import com.example.a21746033.appturtleriot.javaBean.Accion;
+import com.turtleriot.AccionesFragment;
+import com.turtleriot.R;
+import com.turtleriot.fbDataBase.FireDataBase;
+import com.turtleriot.javaBean.Accion;
 
 public class CrearAccionesFragment extends Fragment {
 

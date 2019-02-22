@@ -1,4 +1,4 @@
-package com.example.a21746033.appturtleriot;
+package com.turtleriot;
 
 
 import android.app.Activity;
@@ -20,9 +20,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.a21746033.appturtleriot.autenticacion.Autenticacion;
-import com.example.a21746033.appturtleriot.javaBean.Accion;
-import com.example.a21746033.appturtleriot.javaBean.Usuario;
+import com.turtleriot.autenticacion.Autenticacion;
+import com.turtleriot.javaBean.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -111,11 +110,15 @@ public class PantallaInicioFragment extends Fragment {
                                 addChildEventistener();
                             } else {
                                 Toast.makeText(getContext(), getString(R.string.toast_no_accede), Toast.LENGTH_SHORT).show();
+                                rlCargando.setVisibility(View.INVISIBLE);
+                                pbCargando.setVisibility(View.INVISIBLE);
                             }
                         }
                     });
                 } else {
                     Toast.makeText(getContext(),getString(R.string.toast_no_accede),Toast.LENGTH_SHORT).show();
+                    rlCargando.setVisibility(View.INVISIBLE);
+                    pbCargando.setVisibility(View.INVISIBLE);
                 }
             }
         });
@@ -132,6 +135,7 @@ public class PantallaInicioFragment extends Fragment {
                         Intent i = new Intent(getContext(),PortadaManuActivity.class);
                         i.putExtra("USER",usuario);
                         startActivity(i);
+                        getActivity().finish();
                     }
                 }
 

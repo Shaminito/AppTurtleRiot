@@ -1,6 +1,4 @@
-package com.example.a21746033.appturtleriot.autenticacion;
-
-import android.widget.EditText;
+package com.turtleriot.autenticacion;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

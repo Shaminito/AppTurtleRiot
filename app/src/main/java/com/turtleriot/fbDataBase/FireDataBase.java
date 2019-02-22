@@ -1,10 +1,10 @@
-package com.example.a21746033.appturtleriot.fbDataBase;
+package com.turtleriot.fbDataBase;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.example.a21746033.appturtleriot.javaBean.Accion;
-import com.example.a21746033.appturtleriot.javaBean.BuscarAccionesAdaptador;
+import com.turtleriot.javaBean.Accion;
+import com.turtleriot.javaBean.BuscarAccionesAdaptador;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

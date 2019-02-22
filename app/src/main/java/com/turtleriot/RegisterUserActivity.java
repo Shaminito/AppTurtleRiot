@@ -1,4 +1,4 @@
-package com.example.a21746033.appturtleriot;
+package com.turtleriot;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.a21746033.appturtleriot.javaBean.Usuario;
+import com.turtleriot.javaBean.Usuario;
 
 public class RegisterUserActivity extends AppCompatActivity {
 

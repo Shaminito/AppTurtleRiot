@@ -1,6 +1,4 @@
-package com.example.a21746033.appturtleriot.javaBean;
-
-import android.graphics.drawable.Drawable;
+package com.turtleriot.javaBean;
 
 public class Accion {
 

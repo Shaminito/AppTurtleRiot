@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:padding="@dimen/padding_fondo"
-    tools:context=".SplashScreenFragment">
+    tools:context="com.turtleriot.SplashScreenFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "15164720006",
-    "firebase_url": "https://fir-turtleriot-163e3.firebaseio.com",
-    "project_id": "fir-turtleriot-163e3",
-    "storage_bucket": "fir-turtleriot-163e3.appspot.com"
+    "project_number": "83841328150",
+    "firebase_url": "https://turtleriot-1141d.firebaseio.com",
+    "project_id": "turtleriot-1141d",
+    "storage_bucket": "turtleriot-1141d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:15164720006:android:cc0c02a35085da10",
+        "mobilesdk_app_id": "1:83841328150:android:0f6d8844fdd5b6ea",
         "android_client_info": {
-          "package_name": "com.example.a21746033.appturtleriot"
+          "package_name": "com.turtleriot"
         }
       },
       "oauth_client": [
         {
-          "client_id": "15164720006-0i2m5sptvjq15a3v9qsjpeuqn60mi1vf.apps.googleusercontent.com",
+          "client_id": "83841328150-adqtpi4c940clca2r53a8rdt3f3tdrs0.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBqXlCujc623Ci268kzrj_jAGrK4eyGgnY"
+          "current_key": "AIzaSyAFwRu-57n5wLWNb7FBuo7YPASXFSWcYdI"
         }
       ],
       "services": {

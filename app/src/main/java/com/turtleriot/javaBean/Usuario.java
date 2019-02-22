@@ -1,9 +1,7 @@
-package com.example.a21746033.appturtleriot.javaBean;
+package com.turtleriot.javaBean;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import java.util.ArrayList;
 
 public class Usuario implements Parcelable {
 

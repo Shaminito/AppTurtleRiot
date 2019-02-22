@@ -1,4 +1,4 @@
-package com.example.a21746033.appturtleriot.acciones;
+package com.turtleriot.acciones;
 
 
 import android.os.Bundle;
@@ -9,12 +9,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.example.a21746033.appturtleriot.R;
-import com.example.a21746033.appturtleriot.fbDataBase.FireDataBase;
-import com.example.a21746033.appturtleriot.javaBean.Accion;
-import com.example.a21746033.appturtleriot.javaBean.BuscarAccionesAdaptador;
+import com.turtleriot.R;
+import com.turtleriot.fbDataBase.FireDataBase;
+import com.turtleriot.javaBean.Accion;
+import com.turtleriot.javaBean.BuscarAccionesAdaptador;
 
 import java.util.ArrayList;
 

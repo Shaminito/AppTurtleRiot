@@ -2,9 +2,9 @@ package com.example.a21746033.appturtleriot;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
+
+import com.turtleriot.PortadaManuActivity;
 
 /**
  * Instrumented test, which will execute on an Android device.

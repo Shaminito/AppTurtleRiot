@@ -1,4 +1,4 @@
-package com.example.a21746033.appturtleriot;
+package com.turtleriot;
 
 
 import android.os.Bundle;
@@ -10,11 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.example.a21746033.appturtleriot.acciones.AccionesSeguidosFragment;
-import com.example.a21746033.appturtleriot.acciones.AdministrarAccionesFragment;
-import com.example.a21746033.appturtleriot.acciones.BuscarAccionesFragment;
-import com.example.a21746033.appturtleriot.acciones.CrearAccionesFragment;
-import com.example.a21746033.appturtleriot.fbDataBase.FireDataBase;
+import com.turtleriot.R;
+import com.turtleriot.acciones.AccionesSeguidosFragment;
+import com.turtleriot.acciones.AdministrarAccionesFragment;
+import com.turtleriot.acciones.BuscarAccionesFragment;
+import com.turtleriot.acciones.CrearAccionesFragment;
 
 public class AccionesFragment extends Fragment {
 

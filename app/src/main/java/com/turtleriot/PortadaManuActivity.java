@@ -1,4 +1,4 @@
-package com.example.a21746033.appturtleriot;
+package com.turtleriot;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -15,9 +15,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.a21746033.appturtleriot.fbDataBase.FireDataBase;
 
 public class PortadaManuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
