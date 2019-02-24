@@ -205,7 +205,7 @@ public class CrearAccionesFragment extends Fragment {
                 //PLAYA
                 //Playa playa =
                 //FECHA
-                String fecha = etFecha.getText().toString()+"-"+etHora.getText().toString();
+                String fecha = etFecha.getText().toString()+" "+etHora.getText().toString();
                 //DESCRIPCIÓN
                 String descripcion = tilDescripcionACC.getEditText().getText().toString();
                 if(verificarAccion()){
