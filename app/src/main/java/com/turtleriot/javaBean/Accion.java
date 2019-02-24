@@ -20,7 +20,7 @@ public class Accion implements Parcelable {
     //DESCRIPCIÓN
     private String descripcion;
     //USUARIOS SEGUIDOS
-    private ArrayList<Usuario> listaSeguidores = new ArrayList<>();;
+    private ArrayList<Usuario> listaSeguidores = new ArrayList<>();
 
     public Accion(){}
 

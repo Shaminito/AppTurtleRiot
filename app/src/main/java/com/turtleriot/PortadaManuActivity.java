@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PortadaManuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -42,7 +43,9 @@ public class PortadaManuActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_portada_manu);
 
-        nombre = getIntent().getStringExtra("USER");
+        nombre = ((UsuarioApplication) getApplicationContext()).getUsuario().getUser();
+        String clave = ((UsuarioApplication) getApplicationContext()).getClave();
+        Toast.makeText(this,clave,Toast.LENGTH_LONG).show();
 
         llAcciones = findViewById(R.id.llAcciones);
         llAdvertencia = findViewById(R.id.llAdvertencia);

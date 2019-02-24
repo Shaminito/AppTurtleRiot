@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.turtleriot.AccionesFragment;
 import com.turtleriot.R;
+import com.turtleriot.UsuarioApplication;
 import com.turtleriot.fbDataBase.FireDataBase;
 import com.turtleriot.javaBean.Accion;
 import com.turtleriot.storage.StorageFotos;
@@ -199,7 +200,7 @@ public class CrearAccionesFragment extends Fragment {
                 //CREAR UNA NUEVA ACCION PARA EL FIREBASE
 
                 //NOMBRE
-                String propietario = getActivity().getIntent().getStringExtra("USER");
+                String propietario = ((UsuarioApplication) getContext().getApplicationContext()).getUsuario().getUser();
                 //TITULO
                 String titulo = tilTituloACC.getEditText().getText().toString();
                 //PLAYA

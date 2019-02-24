@@ -5,9 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DatabaseReference;
+import com.turtleriot.fbDataBase.FireDataBase;
 import com.turtleriot.javaBean.Accion;
+import com.turtleriot.javaBean.Usuario;
 
 public class InfoAccionesActivity extends AppCompatActivity {
 
@@ -20,6 +24,8 @@ public class InfoAccionesActivity extends AppCompatActivity {
     private ImageView ivFotoACC;
     private TextView tvDescripcionACC;
     private TextView tvFechaACC;
+
+    private FireDataBase fdb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,8 @@ public class InfoAccionesActivity extends AppCompatActivity {
         tvDescripcionACC.setText(accion.getDescripcion());
         tvFechaACC.setText(accion.getFecha());
 
+        fdb = new FireDataBase();
+        fdb.obtenerclaveAccion(accion);
         c_ivBotonGuardar();
     }
 
@@ -51,7 +59,9 @@ public class InfoAccionesActivity extends AppCompatActivity {
         ivBotonGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO UNIRSE AL ACCION
+                String key = ((UsuarioApplication) getApplicationContext()).getClave();
+                Usuario usuario = ((UsuarioApplication) getApplicationContext()).getUsuario();
+                fdb.unirseAccion(usuario,key);
             }
         });
     }

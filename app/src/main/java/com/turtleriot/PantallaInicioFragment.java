@@ -53,7 +53,7 @@ public class PantallaInicioFragment extends Fragment {
     private DatabaseReference dbR;
     private ChildEventListener cel;
 
-    private String usuario;
+    private Usuario usuario;
 
     public static final int REGISTRAR_CUENTA = 1;
 
@@ -131,11 +131,17 @@ public class PantallaInicioFragment extends Fragment {
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                     Usuario user = dataSnapshot.getValue(Usuario.class);
                     if(autenticacion.getFba().getCurrentUser().getEmail().equals(user.getEmail())){
-                        usuario = user.getUser();
+                        usuario = new Usuario(user.getUser(), autenticacion.getFba().getCurrentUser().getEmail());
+                        String key = dataSnapshot.getKey();
+                        ((UsuarioApplication) getContext().getApplicationContext()).setClave(key);
+                        ((UsuarioApplication) getContext().getApplicationContext()).setUsuario(usuario);
                         Intent i = new Intent(getContext(),PortadaManuActivity.class);
-                        i.putExtra("USER",usuario);
                         startActivity(i);
                         getActivity().finish();
+                    }
+                    else{
+                        rlCargando.setVisibility(View.INVISIBLE);
+                        pbCargando.setVisibility(View.INVISIBLE);
                     }
                 }
 
