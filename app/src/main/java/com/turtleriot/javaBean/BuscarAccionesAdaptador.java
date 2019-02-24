@@ -1,5 +1,6 @@
 package com.turtleriot.javaBean;
 
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -37,13 +38,14 @@ public class BuscarAccionesAdaptador extends RecyclerView.Adapter<BuscarAcciones
         public void bindAcciones(Accion accion){
             tvTituloBACC.setText(accion.getTitulo());
             if(accion.getFoto() != null){
+
                 Glide.with(ivFotoBACC.getContext())
                         .load(accion.getFoto())
                         .into(ivFotoBACC);
             }
             else{
                 Glide.with(ivFotoBACC.getContext())
-                        .load(R.drawable.images)
+                        .load(R.drawable.photo)
                         .into(ivFotoBACC);
             }
             //tvPlayaBACC.settext(accion.getPlaya().getNombre());
