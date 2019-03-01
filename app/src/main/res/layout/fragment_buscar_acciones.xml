@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/flBuscarACC"
     android:layout_width="match_parent"
@@ -55,4 +56,44 @@
             android:layout_marginTop="@dimen/margin_et_top" />
 
     </LinearLayout>
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/menu_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/margenes_menu"
+        app:fab_addButtonColorNormal="@color/color_txt_crearAcciones"
+        fab:fab_addButtonSize="normal"
+        fab:fab_labelsPosition="left">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/accion_favorito"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="?attr/colorAccent"
+            fab:fab_icon="@drawable/ic_menu_camera"
+            fab:fab_size="mini"
+            fab:fab_title="Favorito" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/accion_buscar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="?attr/colorAccent"
+            fab:fab_icon="@drawable/ic_menu_manage"
+            fab:fab_size="mini"
+            fab:fab_title="Buscar" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/accion_carrito"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="?attr/colorAccent"
+            fab:fab_icon="@drawable/ic_menu_share"
+            fab:fab_size="mini"
+            fab:fab_title="Añadir a la cesta" />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
 </FrameLayout>
