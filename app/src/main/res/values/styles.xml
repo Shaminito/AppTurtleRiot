@@ -17,6 +17,11 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="n"></style>
+    <style name="text_format">
+        <item name="android:textColor">@color/textColor_Whiite</item>
+        <item name="android:fontFamily">@font/life_s_a_beach</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
 </resources>

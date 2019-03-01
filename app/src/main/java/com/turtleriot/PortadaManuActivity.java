@@ -1,5 +1,6 @@
 package com.turtleriot;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -166,8 +167,18 @@ public class PortadaManuActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
 
-        if(item.getItemId() == R.id.nav_config){
-
+        if(item.getItemId() == R.id.nav_fotos){
+            Toast.makeText(getApplicationContext(),"Fotos",Toast.LENGTH_LONG).show();
+        }
+        else if(item.getItemId() == R.id.nav_config){
+            Intent i = new Intent(PortadaManuActivity.this,ConfigUserActivity.class);
+            startActivity(i);
+        }
+        else if(item.getItemId() == R.id.nav_compa){
+            Toast.makeText(getApplicationContext(),"Compartir",Toast.LENGTH_LONG).show();
+        }
+        else if(item.getItemId() == R.id.nav_send){
+            Toast.makeText(getApplicationContext(),"Enviar",Toast.LENGTH_LONG).show();
         }
 
         return true;

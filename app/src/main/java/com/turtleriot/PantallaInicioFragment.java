@@ -117,9 +117,9 @@ public class PantallaInicioFragment extends Fragment {
                     });
                 } else {
                     Toast.makeText(getContext(),getString(R.string.toast_no_accede),Toast.LENGTH_SHORT).show();
-                    rlCargando.setVisibility(View.INVISIBLE);
-                    pbCargando.setVisibility(View.INVISIBLE);
                 }
+                rlCargando.setVisibility(View.INVISIBLE);
+                pbCargando.setVisibility(View.INVISIBLE);
             }
         });
     }

@@ -32,6 +32,8 @@ public class InfoAccionesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_acciones);
 
+        getSupportActionBar().hide();
+
         accion = getIntent().getParcelableExtra("ACCION");
 
         ivBotonGuardar = findViewById(R.id.ivBotonGuardar);

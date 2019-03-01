@@ -8,6 +8,7 @@ public class Usuario implements Parcelable {
     private String user;
     private String email;
     private String password;
+    private String fotoUser;
 
     public Usuario() {}
 
