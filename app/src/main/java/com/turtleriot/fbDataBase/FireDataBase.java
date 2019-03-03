@@ -2,6 +2,7 @@ package com.turtleriot.fbDataBase;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.turtleriot.javaBean.Accion;
 import com.turtleriot.javaBean.BuscarAccionesAdaptador;
@@ -92,6 +93,7 @@ public class FireDataBase {
                     Accion accion = dataSnapshot.getValue(Accion.class);
                     if(accion.getTitulo().equals(accionparam.getTitulo())){
                         keyAccion = dataSnapshot.getKey();
+
                     }
                 }
 

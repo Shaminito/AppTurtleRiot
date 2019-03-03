@@ -20,7 +20,7 @@ public class Accion implements Parcelable {
     //DESCRIPCIÓN
     private String descripcion;
     //USUARIOS SEGUIDOS
-    private ArrayList<Usuario> listaSeguidores = new ArrayList<>();
+    private ArrayList<Usuario> seguidores = new ArrayList<>();
 
     public Accion(){}
 
@@ -30,6 +30,7 @@ public class Accion implements Parcelable {
         this.fecha = fecha;
         this.descripcion = descripcion;
         this.foto = foto;
+        seguidores = new ArrayList<>();
     }
 
     // Métodos utilizados para el firebase
@@ -40,7 +41,7 @@ public class Accion implements Parcelable {
         foto = in.readString();
         fecha = in.readString();
         descripcion = in.readString();
-        listaSeguidores = in.createTypedArrayList(Usuario.CREATOR);
+        seguidores = in.createTypedArrayList(Usuario.CREATOR);
     }
 
     public static final Creator<Accion> CREATOR = new Creator<Accion>() {
@@ -75,6 +76,10 @@ public class Accion implements Parcelable {
         return foto;
     }
 
+    public ArrayList<Usuario> getListaSeguidores() {
+        return seguidores;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -87,6 +92,6 @@ public class Accion implements Parcelable {
         dest.writeString(foto);
         dest.writeString(fecha);
         dest.writeString(descripcion);
-        dest.writeTypedList(listaSeguidores);
+        dest.writeTypedList(seguidores);
     }
 }

@@ -117,9 +117,9 @@ public class PantallaInicioFragment extends Fragment {
                     });
                 } else {
                     Toast.makeText(getContext(),getString(R.string.toast_no_accede),Toast.LENGTH_SHORT).show();
+                    rlCargando.setVisibility(View.INVISIBLE);
+                    pbCargando.setVisibility(View.INVISIBLE);
                 }
-                rlCargando.setVisibility(View.INVISIBLE);
-                pbCargando.setVisibility(View.INVISIBLE);
             }
         });
     }
@@ -146,24 +146,16 @@ public class PantallaInicioFragment extends Fragment {
                 }
 
                 @Override
-                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                    //TODO CHANGED
-                }
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
 
                 @Override
-                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-                    //TODO REMOVED
-                }
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {}
 
                 @Override
-                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                }
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
 
                 @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
+                public void onCancelled(@NonNull DatabaseError databaseError) {}
             };
             dbR.addChildEventListener(cel);
         }

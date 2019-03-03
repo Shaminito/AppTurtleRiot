@@ -1,6 +1,7 @@
 package com.turtleriot;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -10,13 +11,19 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Layout;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.mikhaellopez.circularimageview.CircularImageView;
 
 public class PortadaManuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -33,9 +40,17 @@ public class PortadaManuActivity extends AppCompatActivity
     private TextView tvPlayas;
     private TextView tvIr;
 
+    private ImageView ivAcciones;
+    private ImageView ivAdvertencia;
+    private ImageView ivPlayas;
+    private ImageView ivIr;
+
     private RelativeLayout rlFragmentContent;
 
     private String nombre;
+
+    private CircularImageView civFotoUser;
+    private TextView tvNombreUser;
 
     //private FireDataBase fdb;
 
@@ -52,6 +67,11 @@ public class PortadaManuActivity extends AppCompatActivity
         llAdvertencia = findViewById(R.id.llAdvertencia);
         llPlayas = findViewById(R.id.llPlayas);
         llIr = findViewById(R.id.llIr);
+
+        ivAcciones = findViewById(R.id.ivAcciones);
+        ivAdvertencia = findViewById(R.id.ivAdvertencia);
+        ivPlayas = findViewById(R.id.ivPlayas);
+        ivIr = findViewById(R.id.ivIr);
 
         tvMenuNombre = findViewById(R.id.tvMenuNombre);
         tvMenuNombre.setText(nombre);
@@ -75,6 +95,10 @@ public class PortadaManuActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
+        View v = navigationView.getHeaderView(0);
+        civFotoUser = v.findViewById(R.id.civFotoUser);
+        tvNombreUser = v.findViewById(R.id.tvNombreUser);
+        tvNombreUser.setText(nombre);
         navigationView.setNavigationItemSelectedListener(this);
 
         // Controladores para la barra de menú
@@ -98,6 +122,7 @@ public class PortadaManuActivity extends AppCompatActivity
                 ft.replace(R.id.rlFragmentContent, accionesFragment);
                 ft.commit();
                 contenidoSeleccionado(R.color.textColor_selected, R.color.textColor_Whiite, R.color.textColor_Whiite, R.color.textColor_Whiite);
+                contenidoSeleccionadoIV(R.drawable.accion_seleccionado,R.drawable.advertencia, R.drawable.playa,R.drawable.ir);
             }
         });
     }
@@ -112,6 +137,7 @@ public class PortadaManuActivity extends AppCompatActivity
                 ft.replace(R.id.rlFragmentContent, new AdvertenciaFragment());
                 ft.commit();
                 contenidoSeleccionado(R.color.textColor_Whiite, R.color.textColor_selected, R.color.textColor_Whiite, R.color.textColor_Whiite);
+                contenidoSeleccionadoIV(R.drawable.accion,R.drawable.advertencia_seleccionado, R.drawable.playa,R.drawable.ir);
             }
         });
     }
@@ -122,6 +148,7 @@ public class PortadaManuActivity extends AppCompatActivity
             public void onClick(View v) {
                 // TODO PlayasFragment
                 contenidoSeleccionado(R.color.textColor_Whiite, R.color.textColor_Whiite, R.color.textColor_selected, R.color.textColor_Whiite);
+                contenidoSeleccionadoIV(R.drawable.accion,R.drawable.advertencia, R.drawable.playa_seleccionado,R.drawable.ir);
             }
         });
     }
@@ -132,8 +159,16 @@ public class PortadaManuActivity extends AppCompatActivity
             public void onClick(View v) {
                 // TODO IrFragment
                 contenidoSeleccionado(R.color.textColor_Whiite, R.color.textColor_Whiite, R.color.textColor_Whiite, R.color.textColor_selected);
+                contenidoSeleccionadoIV(R.drawable.accion,R.drawable.advertencia, R.drawable.playa,R.drawable.ir_seleccionado);
             }
         });
+    }
+
+    private void contenidoSeleccionadoIV(int accion, int advertencia, int playa, int ir) {
+        ivAcciones.setImageDrawable(getDrawable(accion));
+        ivAdvertencia.setImageDrawable(getDrawable(advertencia));
+        ivPlayas.setImageDrawable(getDrawable(playa));
+        ivIr.setImageDrawable(getDrawable(ir));
     }
 
     private void contenidoSeleccionado(int colorAcciones, int colorAdvertencia, int colorPlayas, int colorIr) {

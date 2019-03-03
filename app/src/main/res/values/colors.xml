@@ -7,6 +7,6 @@
     <color name="color_btnSignIn">#58D0E1</color>
     <color name="color_hint">#aaaaaa</color>
     <color name="color_scroll">#e4e4e4</color>
-    <color name="textColor_selected">#ff0000</color>
+    <color name="textColor_selected">#aaaaaa</color>
     <color name="color_txt_crearAcciones">#dd5935</color>
 </resources>
