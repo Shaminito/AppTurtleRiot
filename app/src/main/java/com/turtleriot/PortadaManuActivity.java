@@ -1,24 +1,24 @@
 package com.turtleriot;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Layout;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,31 +28,19 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 public class PortadaManuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private LinearLayout llAcciones;
-    private LinearLayout llAdvertencia;
-    private LinearLayout llPlayas;
-    private LinearLayout llIr;
-
-    private TextView tvMenuNombre;
-
-    private TextView tvAcciones;
-    private TextView tvAdvertencia;
-    private TextView tvPlayas;
-    private TextView tvIr;
-
-    private ImageView ivAcciones;
-    private ImageView ivAdvertencia;
-    private ImageView ivPlayas;
-    private ImageView ivIr;
-
-    private RelativeLayout rlFragmentContent;
+    private TextView tvBienUser;
 
     private String nombre;
 
+    //ATRIBUTOS DE NAVIGATIONVIEW
     private CircularImageView civFotoUser;
     private TextView tvNombreUser;
 
-    //private FireDataBase fdb;
+    //TABLAYOUTS
+    private ViewPager content;
+    private TabLayout tabLayout;
+    private SectionsPagerAdapter mSectionsPagerAdapter;
+    private RelativeLayout rlFragmentContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,34 +48,49 @@ public class PortadaManuActivity extends AppCompatActivity
         setContentView(R.layout.activity_portada_manu);
 
         nombre = ((UsuarioApplication) getApplicationContext()).getUsuario().getUser();
-        String clave = ((UsuarioApplication) getApplicationContext()).getClave();
-        Toast.makeText(this,clave,Toast.LENGTH_LONG).show();
 
-        llAcciones = findViewById(R.id.llAcciones);
-        llAdvertencia = findViewById(R.id.llAdvertencia);
-        llPlayas = findViewById(R.id.llPlayas);
-        llIr = findViewById(R.id.llIr);
+        tvBienUser = findViewById(R.id.tvBienUser);
 
-        ivAcciones = findViewById(R.id.ivAcciones);
-        ivAdvertencia = findViewById(R.id.ivAdvertencia);
-        ivPlayas = findViewById(R.id.ivPlayas);
-        ivIr = findViewById(R.id.ivIr);
-
-        tvMenuNombre = findViewById(R.id.tvMenuNombre);
-        tvMenuNombre.setText(nombre);
-
-        tvAcciones = findViewById(R.id.tvAcciones);
-        tvAdvertencia = findViewById(R.id.tvAdvertencia);
-        tvPlayas = findViewById(R.id.tvPlayas);
-        tvIr = findViewById(R.id.tvIr);
-
-        rlFragmentContent = findViewById(R.id.rlFragmentContent);
+        tvBienUser.setText(nombre);
 
         //fdb = new FireDataBase();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //TABLAYOUTS
+        rlFragmentContent = findViewById(R.id.rlFragmentContent);
+
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+
+        content = findViewById(R.id.container);
+        content.setAdapter(mSectionsPagerAdapter);
+
+        tabLayout = findViewById(R.id.tab);
+
+        content.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(content) {
+
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                super.onTabSelected(tab);
+                opcionseleccionado(tab, R.color.color_hint);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                super.onTabUnselected(tab);
+                opcionseleccionado(tab, R.color.textColor_Whiite);
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                super.onTabReselected(tab);
+                opcionseleccionado(tab, R.color.color_hint);
+            }
+        });
+
+        //NAVIGATION_VIEW
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -96,86 +99,51 @@ public class PortadaManuActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         View v = navigationView.getHeaderView(0);
+
         civFotoUser = v.findViewById(R.id.civFotoUser);
         tvNombreUser = v.findViewById(R.id.tvNombreUser);
         tvNombreUser.setText(nombre);
         navigationView.setNavigationItemSelectedListener(this);
 
-        // Controladores para la barra de menú
-        c_llAcciones();
-        c_llAdvertencia();
-        c_llPlayas();
-        c_llIr();
     }
 
-    private void c_llAcciones() {
-        llAcciones.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rlFragmentContent.removeAllViews();
-                FragmentManager fm = getSupportFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
+    public void opcionseleccionado(TabLayout.Tab tab, int color){
+        int tabIconColor = ContextCompat.getColor(this, color);
+        tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
+        tabLayout.setTabTextColors(getResources().getColor(R.color.textColor_Whiite), getResources().getColor(R.color.color_hint));
+        rlFragmentContent.setVisibility(View.GONE);
 
-                AccionesFragment accionesFragment = new AccionesFragment();
-                //accionesFragment.setFdb(fdb);
+    }
 
-                ft.replace(R.id.rlFragmentContent, accionesFragment);
-                ft.commit();
-                contenidoSeleccionado(R.color.textColor_selected, R.color.textColor_Whiite, R.color.textColor_Whiite, R.color.textColor_Whiite);
-                contenidoSeleccionadoIV(R.drawable.accion_seleccionado,R.drawable.advertencia, R.drawable.playa,R.drawable.ir);
+    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+
+        SectionsPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            Fragment fragment = null;
+            if(position == 0){
+                fragment = new AccionesFragment();
             }
-        });
-    }
-
-    private void c_llAdvertencia() {
-        llAdvertencia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rlFragmentContent.removeAllViews();
-                FragmentManager fm = getSupportFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-                ft.replace(R.id.rlFragmentContent, new AdvertenciaFragment());
-                ft.commit();
-                contenidoSeleccionado(R.color.textColor_Whiite, R.color.textColor_selected, R.color.textColor_Whiite, R.color.textColor_Whiite);
-                contenidoSeleccionadoIV(R.drawable.accion,R.drawable.advertencia_seleccionado, R.drawable.playa,R.drawable.ir);
+            else if(position == 1){
+                fragment = new AdvertenciaFragment();
             }
-        });
-    }
-
-    private void c_llPlayas() {
-        llPlayas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO PlayasFragment
-                contenidoSeleccionado(R.color.textColor_Whiite, R.color.textColor_Whiite, R.color.textColor_selected, R.color.textColor_Whiite);
-                contenidoSeleccionadoIV(R.drawable.accion,R.drawable.advertencia, R.drawable.playa_seleccionado,R.drawable.ir);
+            else if(position == 2){
+                fragment = new PlayasFragment();
             }
-        });
-    }
-
-    private void c_llIr() {
-        llIr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO IrFragment
-                contenidoSeleccionado(R.color.textColor_Whiite, R.color.textColor_Whiite, R.color.textColor_Whiite, R.color.textColor_selected);
-                contenidoSeleccionadoIV(R.drawable.accion,R.drawable.advertencia, R.drawable.playa,R.drawable.ir_seleccionado);
+            else if(position == 3){
+                fragment = new IrFragment();
             }
-        });
-    }
 
-    private void contenidoSeleccionadoIV(int accion, int advertencia, int playa, int ir) {
-        ivAcciones.setImageDrawable(getDrawable(accion));
-        ivAdvertencia.setImageDrawable(getDrawable(advertencia));
-        ivPlayas.setImageDrawable(getDrawable(playa));
-        ivIr.setImageDrawable(getDrawable(ir));
-    }
+            return fragment;
+        }
 
-    private void contenidoSeleccionado(int colorAcciones, int colorAdvertencia, int colorPlayas, int colorIr) {
-        tvAcciones.setTextColor(getResources().getColor(colorAcciones));
-        tvAdvertencia.setTextColor(getResources().getColor(colorAdvertencia));
-        tvPlayas.setTextColor(getResources().getColor(colorPlayas));
-        tvIr.setTextColor(getResources().getColor(colorIr));
+        @Override
+        public int getCount() {
+            return 4;
+        }
     }
 
     @Override
@@ -188,17 +156,10 @@ public class PortadaManuActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.portada_manu, menu);
-        return true;
-    }
-
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
 

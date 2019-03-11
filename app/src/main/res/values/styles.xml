@@ -24,4 +24,10 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="MyTabLayout" parent="Base.Widget.Design.TabLayout">
+        <item name="android:textColor">@color/textColor_Whiite</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/life_s_a_beach</item>
+    </style>
+
 </resources>

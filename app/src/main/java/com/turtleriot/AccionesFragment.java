@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.turtleriot.R;
 import com.turtleriot.acciones.AccionesSeguidosFragment;
@@ -51,14 +52,10 @@ public class AccionesFragment extends Fragment {
         llBuscarAcciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fm = getActivity().getSupportFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-
                 BuscarAccionesFragment buscarAccionesFragment = new BuscarAccionesFragment();
                 //buscarAccionesFragment.setFdb(fdb);
 
-                ft.replace(R.id.rlFragmentContent, buscarAccionesFragment);
-                ft.commit();
+                accion(buscarAccionesFragment);
             }
         });
     }
@@ -68,14 +65,10 @@ public class AccionesFragment extends Fragment {
         llAccionesSeguidos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fm = getActivity().getSupportFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-
                 AccionesSeguidosFragment accionesSeguidosFragment = new AccionesSeguidosFragment();
                 //accionesSeguidosFragment.setFdb(fdb);
 
-                ft.replace(R.id.rlFragmentContent, accionesSeguidosFragment);
-                ft.commit();
+                accion(accionesSeguidosFragment);
             }
         });
     }
@@ -84,14 +77,9 @@ public class AccionesFragment extends Fragment {
         llCrearAcciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fm = getActivity().getSupportFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-
                 CrearAccionesFragment crearAccionesFragment = new CrearAccionesFragment();
                 //crearAccionesFragment.setFdb(fdb);
-
-                ft.replace(R.id.rlFragmentContent, crearAccionesFragment);
-                ft.commit();
+                accion(crearAccionesFragment);
             }
         });
     }
@@ -100,15 +88,21 @@ public class AccionesFragment extends Fragment {
         llAdministrarAcciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fm = getActivity().getSupportFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-
                 AdministrarAccionesFragment administrarAccionesFragment = new AdministrarAccionesFragment();
                 //administrarAccionesFragment.setFdb(fdb);
 
-                ft.replace(R.id.rlFragmentContent, administrarAccionesFragment);
-                ft.commit();
+                accion(administrarAccionesFragment);
             }
         });
+    }
+
+    private void accion(Fragment fragment) {
+        RelativeLayout rlFragmentContent = getActivity().findViewById(R.id.rlFragmentContent);
+        rlFragmentContent.removeAllViews();
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.rlFragmentContent, fragment);
+        ft.commit();
+        rlFragmentContent.setVisibility(View.VISIBLE);
     }
 }

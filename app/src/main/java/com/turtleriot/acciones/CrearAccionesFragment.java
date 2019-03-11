@@ -212,11 +212,7 @@ public class CrearAccionesFragment extends Fragment {
                 if(verificarAccion()){
                     fdb.guardarAccion(new Accion(propietario,titulo,fecha,descripcion,foto));
 
-                    rlFragmentContent.removeAllViews();
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    FragmentTransaction ft = fm.beginTransaction();
-                    ft.replace(R.id.rlFragmentContent,new AccionesFragment());
-                    ft.commit();
+                    rlFragmentContent.setVisibility(View.GONE);
                 }
                 else{
                     Toast.makeText(getActivity(),getString(R.string.toast_AccionVacio),Toast.LENGTH_SHORT).show();
