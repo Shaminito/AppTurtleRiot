@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
 
         abrirPantallaInicio();
-        getSupportActionBar().hide();
     }
 
     private void abrirPantallaInicio() {

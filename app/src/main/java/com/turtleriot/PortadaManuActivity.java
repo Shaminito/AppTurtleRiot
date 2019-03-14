@@ -90,6 +90,8 @@ public class PortadaManuActivity extends AppCompatActivity
             }
         });
 
+        content.setVisibility(View.GONE);
+
         //NAVIGATION_VIEW
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -112,6 +114,7 @@ public class PortadaManuActivity extends AppCompatActivity
         tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
         tabLayout.setTabTextColors(getResources().getColor(R.color.textColor_Whiite), getResources().getColor(R.color.color_hint));
         rlFragmentContent.setVisibility(View.GONE);
+        content.setVisibility(View.VISIBLE);
 
     }
 
@@ -155,7 +158,6 @@ public class PortadaManuActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
-
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

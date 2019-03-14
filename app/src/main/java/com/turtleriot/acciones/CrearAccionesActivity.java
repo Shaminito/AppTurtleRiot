@@ -1,17 +1,13 @@
 package com.turtleriot.acciones;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.view.LayoutInflater;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -21,7 +17,6 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.turtleriot.AccionesFragment;
 import com.turtleriot.R;
 import com.turtleriot.UsuarioApplication;
 import com.turtleriot.fbDataBase.FireDataBase;
@@ -30,9 +25,7 @@ import com.turtleriot.storage.StorageFotos;
 
 import java.util.Calendar;
 
-public class CrearAccionesFragment extends Fragment {
-
-    private View v;
+public class CrearAccionesActivity extends AppCompatActivity {
 
     private static final String CERO = "0";
     private static final String DOS_PUNTOS = ":";
@@ -56,36 +49,33 @@ public class CrearAccionesFragment extends Fragment {
     TextView etFecha, etHora;
     ImageButton ibObtenerFecha, ibObtenerHora;
 
-    private RelativeLayout rlFragmentContent;
-
     private FireDataBase fdb;
 
     //FOTOS
     private StorageFotos sfFotoAcciones;
     private String foto;
 
-    public CrearAccionesFragment() {}
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_crear_acciones, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_crear_acciones);
 
-        tilTituloACC = v.findViewById(R.id.tilTituloACC);
-        ivFotoACC = v.findViewById(R.id.ivFotoACC);
-        ivPlayaACC = v.findViewById(R.id.ivPlayaACC);
-        tilDescripcionACC = v.findViewById(R.id.tilDescripcionACC);
+        getSupportActionBar().hide();
 
-        ivCrearAcciones = v.findViewById(R.id.ivCrearAcciones);
+        tilTituloACC = findViewById(R.id.tilTituloACC);
+        ivFotoACC = findViewById(R.id.ivFotoACC);
+        ivPlayaACC = findViewById(R.id.ivPlayaACC);
+        tilDescripcionACC = findViewById(R.id.tilDescripcionACC);
 
-        rlFragmentContent = getActivity().findViewById(R.id.rlFragmentContent);
+        ivCrearAcciones = findViewById(R.id.ivCrearAcciones);
 
         fdb = new FireDataBase();
 
-        etFecha = v.findViewById(R.id.et_mostrar_fecha_picker);
-        etHora = v.findViewById(R.id.et_mostrar_hora_picker);
+        etFecha = findViewById(R.id.et_mostrar_fecha_picker);
+        etHora = findViewById(R.id.et_mostrar_hora_picker);
 
-        ibObtenerFecha = v.findViewById(R.id.ib_obtener_fecha);
-        ibObtenerHora = v.findViewById(R.id.ib_obtener_hora);
+        ibObtenerFecha = findViewById(R.id.ib_obtener_fecha);
+        ibObtenerHora = findViewById(R.id.ib_obtener_hora);
 
         sfFotoAcciones = new StorageFotos();
 
@@ -93,8 +83,6 @@ public class CrearAccionesFragment extends Fragment {
         c_ivPlayaACC();
         c_ivCrearAcciones();
         ib_obtener_fecha ();
-
-        return v;
     }
 
     private void ib_obtener_fecha() {
@@ -115,7 +103,7 @@ public class CrearAccionesFragment extends Fragment {
     }
 
     private void recogerHora() {
-        TimePickerDialog recogerHora = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+        TimePickerDialog recogerHora = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
@@ -141,7 +129,7 @@ public class CrearAccionesFragment extends Fragment {
 
     private void recogerFecha() {
 
-        DatePickerDialog recogerfecha = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog recogerfecha = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 final int mesActual = month + 1;
@@ -175,7 +163,7 @@ public class CrearAccionesFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == StorageFotos.RC_FOTO_PLAYA){
             if(resultCode == Activity.RESULT_OK){
-                sfFotoAcciones.subirFoto(data, getActivity());
+                sfFotoAcciones.subirFoto(data, this);
                 foto = sfFotoAcciones.getFoto();
                 Glide.with(ivFotoACC.getContext())
                         .load(foto)
@@ -200,7 +188,7 @@ public class CrearAccionesFragment extends Fragment {
                 //CREAR UNA NUEVA ACCION PARA EL FIREBASE
 
                 //NOMBRE
-                String propietario = ((UsuarioApplication) getContext().getApplicationContext()).getUsuario().getUser();
+                String propietario = ((UsuarioApplication) getApplicationContext()).getUsuario().getUser();
                 //TITULO
                 String titulo = tilTituloACC.getEditText().getText().toString();
                 //PLAYA
@@ -211,11 +199,10 @@ public class CrearAccionesFragment extends Fragment {
                 String descripcion = tilDescripcionACC.getEditText().getText().toString();
                 if(verificarAccion()){
                     fdb.guardarAccion(new Accion(propietario,titulo,fecha,descripcion,foto));
-
-                    rlFragmentContent.setVisibility(View.GONE);
+                    finish();
                 }
                 else{
-                    Toast.makeText(getActivity(),getString(R.string.toast_AccionVacio),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CrearAccionesActivity.this,getString(R.string.toast_AccionVacio),Toast.LENGTH_SHORT).show();
                 }
             }
         });

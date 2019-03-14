@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/flCrearAcciones"
+    android:id="@+id/clCrearAcciones"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/padding_fondo2"
-    tools:context="com.turtleriot.acciones.CrearAccionesFragment">
+    tools:context=".acciones.CrearAccionesActivity">
 
     <LinearLayout
         android:id="@+id/llCrearSeguidos"
@@ -200,4 +200,4 @@
 
     </LinearLayout>
 
-</FrameLayout>
+</android.support.constraint.ConstraintLayout>

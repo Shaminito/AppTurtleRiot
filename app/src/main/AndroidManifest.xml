@@ -26,6 +26,9 @@
         <activity
             android:name=".ConfigUserActivity"
             android:label="@string/title_activity_config_user" />
+        <activity android:name=".acciones.AccionesSeguidosActivity" />
+        <activity android:name=".acciones.CrearAccionesActivity" />
+        <activity android:name=".acciones.AdministrarAccionesActivity"></activity>
     </application>
 
 </manifest>

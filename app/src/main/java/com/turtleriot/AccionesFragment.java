@@ -1,108 +1,109 @@
 package com.turtleriot;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
-import com.turtleriot.R;
-import com.turtleriot.acciones.AccionesSeguidosFragment;
-import com.turtleriot.acciones.AdministrarAccionesFragment;
-import com.turtleriot.acciones.BuscarAccionesFragment;
-import com.turtleriot.acciones.CrearAccionesFragment;
+import com.turtleriot.acciones.AccionesSeguidosActivity;
+import com.turtleriot.acciones.AdministrarAccionesActivity;
+import com.turtleriot.acciones.CrearAccionesActivity;
+import com.turtleriot.fbDataBase.FireDataBase;
+import com.turtleriot.javaBean.Accion;
+import com.turtleriot.javaBean.BuscarAccionesAdaptador;
+
+import java.util.ArrayList;
 
 public class AccionesFragment extends Fragment {
 
     private View v;
 
-    private LinearLayout llBuscarAcciones;
-    private LinearLayout llAccionesSeguidos;
-    private LinearLayout llCrearAcciones;
-    private LinearLayout llAdministrarAcciones;
+    private RecyclerView rvBuscarAcciones;
 
-    //private FireDataBase fdb;
+    private ArrayList<Accion> listaAcciones;
+    private LinearLayoutManager llm;
+    private BuscarAccionesAdaptador adaptador;
+
+    private FloatingActionButton fabSeguidosAcciones;
+    private FloatingActionButton fabCrearAcciones;
+    private FloatingActionButton fabAdministrarAcciones;
+
+    // DATABASE
+    private FireDataBase fdb;
 
     public AccionesFragment() {}
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_acciones, container, false);
 
-        llBuscarAcciones = v.findViewById(R.id.llBuscarAcciones);
-        llAccionesSeguidos = v.findViewById(R.id.llAccionesSeguidos);
-        llCrearAcciones = v.findViewById(R.id.llCrearAcciones);
-        llAdministrarAcciones = v.findViewById(R.id.llAdministrarAcciones);
+        rvBuscarAcciones = v.findViewById(R.id.rvBuscarAcciones);
 
-        c_llBuscarAcciones();
-        c_llAccionesSeguidos();
-        c_llCrearAcciones();
-        c_llAdministrarAcciones();
+        listaAcciones = new ArrayList<>();
+        llm = new LinearLayoutManager(getActivity());
+        adaptador = new BuscarAccionesAdaptador(listaAcciones);
+
+        adaptador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Accion accion = listaAcciones.get(rvBuscarAcciones.getChildAdapterPosition(v));
+                Intent i = new Intent(getContext(),InfoAccionesActivity.class);
+                i.putExtra("ACCION",accion);
+                startActivity(i);
+            }
+        });
+
+        fdb = new FireDataBase();
+        fdb.setListaAcciones(listaAcciones);
+        fdb.setAdaptador(adaptador);
+
+        fdb.arrancarChildItemListener();
+
+        rvBuscarAcciones.setLayoutManager(llm);
+        rvBuscarAcciones.setAdapter(adaptador);
+        rvBuscarAcciones.setItemAnimator(new DefaultItemAnimator());
+
+        fabSeguidosAcciones = v.findViewById(R.id.fabSeguidosAcciones);
+        fabCrearAcciones = v.findViewById(R.id.fabCrearAcciones);
+        fabAdministrarAcciones = v.findViewById(R.id.fabAdministrarAcciones);
+
+        c_fabSeguidosAcciones();
+        c_fabCrearAcciones();
+        c_fabAdministrarAcciones();
 
         return v;
     }
 
-    //public void setFdb(FireDataBase fdb) {this.fdb = fdb;}
-
-    private void c_llBuscarAcciones() {
-        llBuscarAcciones.setOnClickListener(new View.OnClickListener() {
+    private void c_fabSeguidosAcciones() {
+        fabSeguidosAcciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuscarAccionesFragment buscarAccionesFragment = new BuscarAccionesFragment();
-                //buscarAccionesFragment.setFdb(fdb);
-
-                accion(buscarAccionesFragment);
+                startActivity(new Intent(getContext(),AccionesSeguidosActivity.class));
             }
         });
     }
 
-    private void c_llAccionesSeguidos() {
-
-        llAccionesSeguidos.setOnClickListener(new View.OnClickListener() {
+    private void c_fabCrearAcciones() {
+        fabCrearAcciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AccionesSeguidosFragment accionesSeguidosFragment = new AccionesSeguidosFragment();
-                //accionesSeguidosFragment.setFdb(fdb);
-
-                accion(accionesSeguidosFragment);
+                startActivity(new Intent(getContext(),CrearAccionesActivity.class));
             }
         });
     }
 
-    private void c_llCrearAcciones() {
-        llCrearAcciones.setOnClickListener(new View.OnClickListener() {
+    private void c_fabAdministrarAcciones() {
+        fabAdministrarAcciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CrearAccionesFragment crearAccionesFragment = new CrearAccionesFragment();
-                //crearAccionesFragment.setFdb(fdb);
-                accion(crearAccionesFragment);
+                startActivity(new Intent(getContext(),AdministrarAccionesActivity.class));
             }
         });
-    }
-
-    private void c_llAdministrarAcciones() {
-        llAdministrarAcciones.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AdministrarAccionesFragment administrarAccionesFragment = new AdministrarAccionesFragment();
-                //administrarAccionesFragment.setFdb(fdb);
-
-                accion(administrarAccionesFragment);
-            }
-        });
-    }
-
-    private void accion(Fragment fragment) {
-        RelativeLayout rlFragmentContent = getActivity().findViewById(R.id.rlFragmentContent);
-        rlFragmentContent.removeAllViews();
-        FragmentManager fm = getActivity().getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.rlFragmentContent, fragment);
-        ft.commit();
-        rlFragmentContent.setVisibility(View.VISIBLE);
     }
 }

@@ -5,7 +5,7 @@
     android:id="@+id/flAccionesSeguidos"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.turtleriot.acciones.AccionesSeguidosFragment">
+    tools:context="com.turtleriot.acciones.AccionesSeguidosActivity">
 
     <LinearLayout
         android:id="@+id/llAccionesSeguidos"
