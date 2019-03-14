@@ -57,6 +57,11 @@ public class BuscarAccionesAdaptador extends RecyclerView.Adapter<BuscarAcciones
         this.listaAcciones = listaAcciones;
     }
 
+
+    public void setListaAcciones(ArrayList<Accion> listaAcciones) {
+        this.listaAcciones = listaAcciones;
+    }
+
     @NonNull
     @Override
     public MiViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
